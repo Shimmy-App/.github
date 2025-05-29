@@ -1,11 +1,11 @@
 <div align="center">
   <img src="./Shm.png" alt="Shimmy Logo" width="300"/>
   <h1>👋 Welcome to Shimmy! 👋</h1>
-  <p>Your purpose-driven social media journey begins here.</p>
+  Your purpose-driven social media journey begins here.
 
   ---
 
-  <p>At Shimmy, we are passionately building a unique digital space where **meaningful connections** and **purposeful content** thrive. We are absolutely thrilled to welcome you to our mission to redefine what social media can be.</p>
+  At Shimmy, we are passionately building a unique digital space where **meaningful connections** and **purposeful content** thrive. We are absolutely thrilled to welcome you to our mission to redefine what social media can be.
 
   <h2>🚀 Get Started with Shimmy</h2>
 
@@ -18,17 +18,17 @@
 
   <h3>🔑 Seamless App & Account Access</h3>
 
-  <p>All essential information for accessing the Shimmy application and managing your account, including secure credentials, is exclusively provided through our **Confluence knowledge base**.</p>
+  All essential information for accessing the Shimmy application and managing your account, including secure credentials, is exclusively provided through our **Confluence knowledge base**.
 
   ➡️ **Access Confluence Here:** [https://shimmyapp.atlassian.net/wiki/home](https://shimmyapp.atlassian.net/wiki/home)
 
   <h3>❓ Need Further Assistance?</h3>
 
-  <p>Should you require any further access details, have questions about getting started, or need general support, please do not hesitate to contact your dedicated **company administrator**. They are standing by to assist you every step of the way!</p>
+  Should you require any further access details, have questions about getting started, or need general support, please do not hesitate to contact your dedicated **company administrator**. They are standing by to assist you every step of the way!
 
----
+  ---
 
-<div align="center">
   <h3>💜 We're confident you're going to love being a part of the Shimmy community! 💜</h3>
-  <p>Thanks for being with us!</p>
+  
+  Thank you for embarking on this journey with us!
 </div>
