@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://assets.website-files.com/64b5bb663a759082d43a531e/64b5bc751d3b01511252ec44_shimmy-logo-full-white.svg" alt="Shimmy Logo" width="300"/>
+  <img src="./images/shimmy-logo.png" alt="Shimmy Logo" width="300"/>
   <h1>👋 Welcome to Shimmy! 👋</h1>
   <p>Your purpose-driven social media journey starts here.</p>
 </div>
@@ -15,7 +15,7 @@ At Shimmy, we're building a unique space where **meaningful connections** and **
 | Platform        | Link                              | Description                                    |
 | :-------------- | :-------------------------------- | :--------------------------------------------- |
 | **Official Site** | [shimmyapp.com](https://www.shimmyapp.com/) | Discover our vision and learn more about Shimmy. |
-| **Live Platform** | [shimmy.live](https://www.himmy.live/)     | Experience Shimmy live!                       |
+| **Live Platform** | [shimmy.live](https://www.shimmy.live/)     | Experience Shimmy live!                       |
 
 ### 🔑 App & Account Access
 
