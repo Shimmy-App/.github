@@ -1,6 +1,7 @@
 <div align="center">
   <img src="./Shm.png" alt="Shimmy Logo" width="300"/>
   <h1>👋 Welcome to Shimmy! 👋</h1>
+  
   Your purpose-driven social media journey begins here.
 
   ---
