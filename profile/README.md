@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./images/shimmy-logo.png" alt="Shimmy Logo" width="300"/>
+  <img src="./profile/Shm.png" alt="Shimmy Logo" width="300"/>
   <h1>👋 Welcome to Shimmy! 👋</h1>
   <p>Your purpose-driven social media journey starts here.</p>
 </div>
