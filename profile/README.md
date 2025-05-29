@@ -15,7 +15,7 @@ At Shimmy, we're building a unique space where **meaningful connections** and **
 | Platform        | Link                              | Description                                    |
 | :-------------- | :-------------------------------- | :--------------------------------------------- |
 | **Official Site** | [shimmyapp.com](https://www.shimmyapp.com/) | Discover our vision and learn more about Shimmy. |
-| **Live Platform** | [shimmy.live](https://www.shimmy.live/)     | Experience Shimmy live!                       |
+| **Live Platform** | [shimmy.live](https://www.himmy.live/)     | Experience Shimmy live!                       |
 
 ### 🔑 App & Account Access
 
