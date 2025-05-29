@@ -1,29 +1,35 @@
-👋 Welcome to Shimmy! 👋 
+<div align="center">
+  <img src="https://assets.website-files.com/64b5bb663a759082d43a531e/64b5bc751d3b01511252ec44_shimmy-logo-full-white.svg" alt="Shimmy Logo" width="300"/>
+  <h1>👋 Welcome to Shimmy! 👋</h1>
+  <p>Your purpose-driven social media journey starts here.</p>
+</div>
 
-Shimmy is a purpose-driven social media application designed to connect you with meaningful content and communities. We're excited to have you on board!
+---
 
-*Quick Links*
+At Shimmy, we're building a unique space where **meaningful connections** and **purposeful content** thrive. We're thrilled to have you join our mission to redefine social media!
 
-Learn More: shimmyapp.com
-Our Platform Landing Page: shimmy.live
+## 🚀 Get Started with Shimmy
 
-*Getting Started*
+### 🔗 Explore Our Platforms
 
-To access the Shimmy app dev accounts, all necessary information and credentials are provided through Confluence (https://shimmyapp.atlassian.net/wiki/home).
+| Platform        | Link                              | Description                                    |
+| :-------------- | :-------------------------------- | :--------------------------------------------- |
+| **Official Site** | [shimmyapp.com](https://www.shimmyapp.com/) | Discover our vision and learn more about Shimmy. |
+| **Live Platform** | [shimmy.live](https://www.shimmy.live/)     | Experience Shimmy live!                       |
 
-Need Access? 
+### 🔑 App & Account Access
 
-If you haven't received your access details or require further assistance, please reach out to your company administrator. They'll be happy to help get you set up!
+All essential information for accessing the Shimmy app and managing your account, including credentials, is securely provided through our **Confluence knowledge base**.
 
-🧡 💜 We believe you're going to love being a part of Shimmy! 🧡 💜
+➡️ **Access Confluence Here:** [https://shimmyapp.atlassian.net/wiki/home](https://shimmyapp.atlassian.net/wiki/home)
 
-<!--
+### ❓ Need Further Assistance?
 
-**Here are some ideas to get you started:**
+If you haven't received your access details, or require any further support with getting started, please don't hesitate to contact your **company administrator**. They are ready to help you every step of the way!
 
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
+---
+
+<div align="center">
+  <h3>💜 We're confident you're going to love being a part of the Shimmy community! 💜</h3>
+  <p>Thanks for being with us!</p>
+</div>
