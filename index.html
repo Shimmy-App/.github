@@ -277,7 +277,7 @@
         .mobile-screen {
             width: 85%;
             height: 85%;
-            background: linear-gradient(135deg, #FF8600 0%, #754897 100%); /* Brand gradient for screen */
+            /* Removed background gradient, as app.png will provide the visual */
             border-radius: 30px;
             display: flex;
             align-items: center;
@@ -287,7 +287,16 @@
             box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
         }
 
-        /* Mobile Screen Glow Effect */
+        /* Style for the app.png image within the mobile screen */
+        .app-image {
+            width: 90%; /* Adjust as needed to fit well within the screen */
+            height: 90%; /* Adjust as needed */
+            object-fit: contain; /* Ensures the image fits without distortion */
+            border-radius: 20px; /* Slightly rounded corners for the app screen image */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+        }
+
+        /* Mobile Screen Glow Effect (retained for overall phone visual) */
         .mobile-screen::before {
             content: '';
             position: absolute;
@@ -311,21 +320,8 @@
             }
         }
 
-        /* Lock Icon on Mobile Screen */
-        .lock-icon {
-            font-size: 3.5rem;
-            color: #fff;
-            text-shadow: 0 0 25px rgba(255, 255, 255, 0.7); /* White glow effect */
-            z-index: 1;
-            position: relative;
-            animation: iconPulse 2s infinite; /* Pulsing animation */
-        }
-
-        /* Keyframes for Icon Pulse */
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
+        /* Lock Icon on Mobile Screen (removed, replaced by app.png) */
+        /* .lock-icon { } */
 
         /* Brand Glow Effects (behind mobile device) */
         .brand-glow-effect {
@@ -456,7 +452,7 @@
                         <img src="./images/confluence.png" alt="Confluence Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=Conf'; console.error('Failed to load Confluence logo: ./images/confluence.png');">
                         <div class="tech-name">Confluence</div>
                     </a>
-                    <!-- Reverting AI Tools image to placeholder, as drive.png is now for G Drive -->
+                    <!-- AI Tools placeholder remains, as drive.png is now used for G Drive -->
                     <a href="https://example.com/ai-tools" target="_blank" class="tech-item">
                         <img src="https://placehold.co/50x50/754897/white?text=AI" alt="AI Tools Logo" class="tech-icon" onerror="this.onerror=null;console.error('Failed to load AI Tools logo, using placeholder.');"> 
                         <div class="tech-name">AI Tools</div>
@@ -470,7 +466,8 @@
                 
                 <div class="mobile-device">
                     <div class="mobile-screen">
-                        <div class="lock-icon">🔒</div>
+                        <!-- app.png image added to the center of the phone -->
+                        <img src="./images/app.png" alt="Mobile App Screen" class="app-image" onerror="this.onerror=null;this.src='https://placehold.co/180x350/FF8600/white?text=App%20Screen'; console.error('Failed to load app.png image for mobile screen.');">
                     </div>
                 </div>
                 <h3 style="margin-top: 25px; font-size: 1.3rem; background: linear-gradient(45deg, #FF8600, #754897); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Mobile Application</h3>
