@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Ecosystem Map</title>
+    <!-- Google Fonts - Baloo 2 (Imported for all text) -->
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         /* Global Reset */
@@ -286,11 +287,11 @@
             box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
         }
 
-        /* Style for the app.png image within the mobile screen - Removed border and shadow */
+        /* Style for the app.png image within the mobile screen - Removed border and shadow, made to fill parent */
         .app-image {
-            width: 30%; /* Adjusted to roughly half of the previous 45%, or ~20% of screen width */
-            height: 30%; /* Adjusted to roughly half of the previous 45%, or ~20% of screen height */
-            object-fit: contain; /* Ensures the image fits without distortion */
+            width: 100%; /* Fill the entire width of the parent (.mobile-screen) */
+            height: 100%; /* Fill the entire height of the parent (.mobile-screen) */
+            object-fit: contain; /* Ensures the image fits without distortion, maintaining aspect ratio */
             border-radius: 0; /* Removed border-radius */
             box-shadow: none; /* Removed box-shadow */
         }
@@ -420,6 +421,7 @@
     <div class="floating-orb orb-orange" style="width: 100px; height: 100px; bottom: 20%; left: 20%; animation-delay: 10s;"></div>
     
     <div class="container">
+        <!-- Main Logo at the top -->
         <img src="./images/Name Logo.png" alt="Shimmy Logo" class="header-logo" onerror="this.onerror=null;this.src='https://placehold.co/200x50/B8B8B8/black?text=Shimmy%20Logo%20Missing'; console.error('Failed to load Shimmy Logo: ./images/Name Logo.png');">
         <h1 class="title">Product Ecosystem Map</h1>
         
@@ -437,6 +439,7 @@
                         <img src="./images/stripe.png" alt="Stripe Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/754897/white?text=Stripe'; console.error('Failed to load Stripe logo: ./images/stripe.png');">
                         <div class="tech-name">Stripe</div>
                     </a>
+                    <!-- JQL replaced with G Drive -->
                     <a href="https://drive.google.com/drive/folders/1EQ0MYsdr30wSo-cU6k5-_luElZO2pQJN?usp=sharing" target="_blank" class="tech-item">
                         <img src="./images/drive.png" alt="G Drive Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=G%20Drive'; console.error('Failed to load G Drive logo: ./images/drive.png');">
                         <div class="tech-name">G Drive</div>
@@ -449,6 +452,7 @@
                         <img src="./images/confluence.png" alt="Confluence Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=Conf'; console.error('Failed to load Confluence logo: ./images/confluence.png');">
                         <div class="tech-name">Confluence</div>
                     </a>
+                    <!-- AI Tools placeholder remains, as drive.png is now used for G Drive -->
                     <a href="https://example.com/ai-tools" target="_blank" class="tech-item">
                         <img src="https://placehold.co/50x50/754897/white?text=AI" alt="AI Tools Logo" class="tech-icon" onerror="this.onerror=null;console.error('Failed to load AI Tools logo, using placeholder.');"> 
                         <div class="tech-name">AI Tools</div>
@@ -462,6 +466,7 @@
                 
                 <div class="mobile-device">
                     <div class="mobile-screen">
+                        <!-- app.png image updated to fill the entire screen -->
                         <img src="./images/app.png" alt="Mobile App Screen" class="app-image" onerror="this.onerror=null;this.src='https://placehold.co/180x350/FF8600/white?text=App%20Screen'; console.error('Failed to load app.png image for mobile screen.');">
                     </div>
                 </div>
