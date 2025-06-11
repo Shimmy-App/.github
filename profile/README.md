@@ -16,6 +16,7 @@
   | :---------------- | :------------------------------------ | :---------------------------------------------------- |
   | **Official Site** | [shimmyapp.com](https://www.shimmyapp.com/) | Discover our inspiring vision and learn more about Shimmy. |
   | **Live Platform** | [shimmy.live](https://www.shimmy.live/)     | Immerse yourself and experience Shimmy in real-time!   |
+  | **Product Map** | [Product Map](https://shimmy-app.github.io/.github/)     | View all Shimmy Dev tools   |
 
   <h3>🔑 Seamless App & Account Access</h3>
 
