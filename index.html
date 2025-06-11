@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Ecosystem Map</title>
+    <!-- Google Fonts - Baloo 2 (Imported for all text) -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         /* Global Reset */
         * {
@@ -12,10 +14,9 @@
             box-sizing: border-box;
         }
 
-        /* Body Styling */
+        /* Body Styling - Apply Baloo 2 to all text */
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            /* Flatter, darker purple background with subtle orange */
+            font-family: 'Baloo 2', cursive; /* Applied Baloo 2 font for all text */
             background: linear-gradient(135deg, #1A1A2E 0%, #2A1A4E 50%, #3A0A6E 100%); /* Darker purple base */
             min-height: 100vh;
             overflow-x: auto; /* Allows horizontal scrolling if content exceeds viewport */
@@ -71,11 +72,11 @@
             50% { transform: scale(1.05); opacity: 0.9; }
         }
 
-        /* Title Styling */
+        /* Title Styling - Specific font-weight for Extra Bold */
         .title {
             text-align: center;
             font-size: 3rem;
-            font-weight: 800;
+            font-weight: 800; /* Baloo 2 Extra Bold */
             background: linear-gradient(45deg, #FF8600, #754897, #FF8600, #754897); /* Gradient for text fill */
             background-size: 300% 300%; /* Larger background for animation */
             -webkit-background-clip: text;
@@ -147,7 +148,7 @@
         /* Section Title Styling */
         .section-title {
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 700; /* Use font-weight for Baloo 2 Semibold/Bold */
             margin-bottom: 25px;
             background: linear-gradient(45deg, #FF8600, #754897); /* Gradient for title text */
             -webkit-background-clip: text;
@@ -205,9 +206,8 @@
             border-color: rgba(255, 134, 0, 0.4); /* Darker orange border */
         }
 
-        /* Tech Icon Styling */
+        /* Tech Icon Styling - Crucial for image display */
         .tech-icon {
-            /* These properties are crucial for making image logos display correctly */
             width: 50px; /* Set a fixed width for the image */
             height: 50px; /* Set a fixed height for the image */
             object-fit: contain; /* Ensures the image fits within the bounds without stretching */
@@ -221,7 +221,7 @@
         /* Tech Name Styling */
         .tech-name {
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 600; /* Use font-weight for Baloo 2 Semibold/Bold */
             color: #e8e8e8;
             text-shadow: 0 0 10px rgba(255, 134, 0, 0.2); /* Subtle text shadow */
         }
@@ -425,7 +425,8 @@
     <div class="floating-orb orb-orange" style="width: 100px; height: 100px; bottom: 20%; left: 20%; animation-delay: 10s;"></div>
     
     <div class="container">
-        <img src="./images/Name Logo.png" alt="Shimmy Logo" class="header-logo">
+        <!-- Main Logo at the top -->
+        <img src="./images/Name Logo.png" alt="Shimmy Logo" class="header-logo" onerror="this.onerror=null;this.src='https://placehold.co/200x50/B8B8B8/black?text=Shimmy%20Logo%20Missing'; console.error('Failed to load Shimmy Logo: ./images/Name Logo.png');">
         <h1 class="title">Product Ecosystem Map</h1>
         
         <div class="product-map">
@@ -434,28 +435,31 @@
                     🛠️ Development Tools
                 </h2>
                 <div class="tech-grid">
-                    <a href="https://www.figma.com/design/zVLdirhn4Wsi31hcHk3nqv/SHM?node-id=8-222&t=VVjJ5z4joyuzYUbc-1" target="_blank" class="tech-item">
-                        <img src="./images/figma.png" alt="Figma Logo" class="tech-icon">
+                    <a href="https://www.figma.com/design/zVLdirhn4Wsi31hcHk3nqv/SHM?node-id=8-222&t=jWfWX0cw9mdefgb1-1" target="_blank" class="tech-item">
+                        <img src="./images/figma.png" alt="Figma Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=Figma'; console.error('Failed to load Figma logo: ./images/figma.png');">
                         <div class="tech-name">Figma</div>
                     </a>
                     <a href="https://stripe.com/" target="_blank" class="tech-item">
-                        <img src="./images/stripe.png" alt="Stripe Logo" class="tech-icon">
+                        <img src="./images/stripe.png" alt="Stripe Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/754897/white?text=Stripe'; console.error('Failed to load Stripe logo: ./images/stripe.png');">
                         <div class="tech-name">Stripe</div>
                     </a>
-                    <a href="https://jira.atlassian.com/plugins/servlet/mobile?os_authType=basic#issue/JQL" target="_blank" class="tech-item">
-                        <img src="./images/jql.png" alt="JQL Logo" class="tech-icon">
-                        <div class="tech-name">JQL</div>
+                    <!-- JQL replaced with G Drive -->
+                    <a href="https://drive.google.com/" target="_blank" class="tech-item">
+                        <img src="./images/drive.png" alt="G Drive Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=G%20Drive'; console.error('Failed to load G Drive logo: ./images/drive.png');">
+                        <div class="tech-name">G Drive</div>
                     </a>
-                    <a href="https://home.atlassian.com/" target="_blank" class="tech-item">
-                        <img src="./images/jira.png" alt="Jira Logo" class="tech-icon">
+                    <a href="https://shimmyapp.atlassian.net/jira/core/projects/INF/summary" target="_blank" class="tech-item">
+                        <img src="./images/jira.png" alt="Jira Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/754897/white?text=Jira'; console.error('Failed to load Jira logo: ./images/jira.png');">
                         <div class="tech-name">Jira</div>
                     </a>
-                     <a href="https://home.atlassian.com/" target="_blank" class="tech-item">
-                        <img src="./images/confluence.png" alt="Confluence Logo" class="tech-icon">
+                     <a href="https://shimmyapp.atlassian.net/wiki/spaces/KB/overview?mode=global" target="_blank" class="tech-item">
+                        <img src="./images/confluence.png" alt="Confluence Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=Conf'; console.error('Failed to load Confluence logo: ./images/confluence.png');">
                         <div class="tech-name">Confluence</div>
                     </a>
+                    <!-- Reverting AI Tools image to placeholder, as drive.png is now for G Drive -->
                     <a href="https://example.com/ai-tools" target="_blank" class="tech-item">
-                        <img src="./images/drive.png" alt="AI Tools Logo" class="tech-icon"> <div class="tech-name">AI Tools</div>
+                        <img src="https://placehold.co/50x50/754897/white?text=AI" alt="AI Tools Logo" class="tech-icon" onerror="this.onerror=null;console.error('Failed to load AI Tools logo, using placeholder.');"> 
+                        <div class="tech-name">AI Tools</div>
                     </a>
                 </div>
             </div>
@@ -478,23 +482,25 @@
                 </h2>
                 <div class="tech-grid">
                     <a href="https://flutter.dev/" target="_blank" class="tech-item">
-                        <img src="./images/flutter.png" alt="Flutter Logo" class="tech-icon">
+                        <img src="./images/flutter.png" alt="Flutter Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=Flttr'; console.error('Failed to load Flutter logo: ./images/flutter.png');">
                         <div class="tech-name">Flutter</div>
                     </a>
-                    <a href="https://github.com/orgs/Shimmy-App/repositories" target="_blank" class="tech-item">
-                        <img src="./images/github.png" alt="GitHub Logo" class="tech-icon">
+                    <a href="https://github.com/Shimmy-App/" target="_blank" class="tech-item">
+                        <img src="./images/github.png" alt="GitHub Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/754897/white?text=Git'; console.error('Failed to load GitHub logo: ./images/github.png');">
                         <div class="tech-name">GitHub</div>
                     </a>
                     <a href="https://api-shimmyapp.com/nova/" target="_blank" class="tech-item">
-                        <img src="./images/nova.png" alt="Nova Logo" class="tech-icon">
+                        <img src="./images/nova.png" alt="Nova Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=Nova'; console.error('Failed to load Nova logo: ./images/nova.png');">
                         <div class="tech-name">Nova</div>
                     </a>
                     <a href="https://firebase.google.com/" target="_blank" class="tech-item">
-                        <img src="./images/firebase.png" alt="Firebase Logo" class="tech-icon">
+                        <img src="./images/firebase.png" alt="Firebase Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/754897/white?text=Fire'; console.error('Failed to load Firebase logo: ./images/firebase.png');">
                         <div class="tech-name">Firebase</div>
                     </a>
+                    <!-- Analytics image updated to analytics.png -->
                     <a href="https://example.com/analytics" target="_blank" class="tech-item">
-                        <img src="./images/analytics-logo.png" alt="Analytics Logo" class="tech-icon"> <div class="tech-name">Analytics</div>
+                        <img src="./images/analytics.png" alt="Analytics Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=Anal'; console.error('Failed to load Analytics logo: ./images/analytics.png');">
+                        <div class="tech-name">Analytics</div>
                     </a>
                 </div>
             </div>
@@ -505,18 +511,20 @@
                 </h2>
                 <div class="tech-grid">
                     <a href="https://laravel.com/" target="_blank" class="tech-item">
-                        <img src="./images/laravel.png" alt="Laravel Logo" class="tech-icon">
+                        <img src="./images/laravel.png" alt="Laravel Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/754897/white?text=Lrvl'; console.error('Failed to load Laravel logo: ./images/laravel.png');">
                         <div class="tech-name">Laravel</div>
                     </a>
                     <a href="https://www.php.net/" target="_blank" class="tech-item">
-                        <img src="./images/php.png" alt="PHP Logo" class="tech-icon">
+                        <img src="./images/php.png" alt="PHP Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=PHP'; console.error('Failed to load PHP logo: ./images/php.png');">
                         <div class="tech-name">PHP</div>
                     </a>
-                    <a href="https://example.com/apis" target="_blank" class="tech-item">
-                        <img src="./images/postman.png" alt="APIs Logo" class="tech-icon"> <div class="tech-name">APIs</div>
+                    <a href="https://shimmy-app.postman.co/" target="_blank" class="tech-item">
+                        <img src="./images/postman.png" alt="APIs Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/754897/white?text=API'; console.error('Failed to load Postman logo: ./images/postman.png');">
+                        <div class="tech-name">APIs</div>
                     </a>
                     <a href="https://example.com/auth" target="_blank" class="tech-item">
-                        <img src="./images/typesense.png" alt="Auth Logo" class="tech-icon"> <div class="tech-name">Auth</div>
+                        <img src="./images/typesense.png" alt="Auth Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=Auth'; console.error('Failed to load Typesense logo: ./images/typesense.png');">
+                        <div class="tech-name">Auth</div>
                     </a>
                 </div>
             </div>
@@ -527,25 +535,28 @@
                 </h2>
                 <div class="tech-grid">
                     <a href="https://aws.amazon.com/" target="_blank" class="tech-item">
-                        <img src="./images/aws.png" alt="AWS Logo" class="tech-icon">
+                        <img src="./images/aws.png" alt="AWS Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/754897/white?text=AWS'; console.error('Failed to load AWS logo: ./images/aws.png');">
                         <div class="tech-name">AWS</div>
                     </a>
                     <a href="https://aws.amazon.com/s3/" target="_blank" class="tech-item">
-                        <img src="./images/s3.png" alt="S3 Logo" class="tech-icon">
+                        <img src="./images/s3.png" alt="S3 Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=S3'; console.error('Failed to load S3 logo: ./images/s3.png');">
                         <div class="tech-name">S3</div>
                     </a>
                     <a href="https://aws.amazon.com/lambda/" target="_blank" class="tech-item">
-                        <img src="./images/lambda.png" alt="Lambda Logo" class="tech-icon">
+                        <img src="./images/lambda.png" alt="Lambda Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/754897/white?text=Lmbd'; console.error('Failed to load Lambda logo: ./images/lambda.png');">
                         <div class="tech-name">Lambda</div>
                     </a>
                     <a href="https://example.com/ci-cd" target="_blank" class="tech-item">
-                        <img src="./images/ci-cd.png" alt="CI/CD Logo" class="tech-icon"> <div class="tech-name">CI/CD</div>
+                        <img src="./images/ci-cd.png" alt="CI/CD Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=CI/CD'; console.error('Failed to load CI/CD logo: ./images/ci-cd.png');">
+                        <div class="tech-name">CI/CD</div>
                     </a>
                     <a href="https://example.com/monitoring" target="_blank" class="tech-item">
-                        <img src="./images/monitoring.png" alt="Monitoring Logo" class="tech-icon"> <div class="tech-name">Monitoring</div>
+                        <img src="./images/monitoring.png" alt="Monitoring Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/754897/white?text=Mon'; console.error('Failed to load Monitoring logo: ./images/monitoring.png');">
+                        <div class="tech-name">Monitoring</div>
                     </a>
                     <a href="https://example.com/database" target="_blank" class="tech-item">
-                        <img src="./images/database.png" alt="Database Logo" class="tech-icon"> <div class="tech-name">Database</div>
+                        <img src="./images/database.png" alt="Database Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=DB'; console.error('Failed to load Database logo: ./images/database.png');">
+                        <div class="tech-name">Database</div>
                     </a>
                 </div>
             </div>
@@ -570,7 +581,8 @@
             item.addEventListener('click', function(event) {
                 // Check if the clicked element is an anchor tag or part of one
                 const isAnchor = this.tagName === 'A' || this.closest('A');
-                if (!isAnchor) {
+                // Only create ripple if it's NOT an anchor (to avoid interfering with link click)
+                if (!isAnchor) { 
                     const ripple = document.createElement('div');
                     const isOrange = Math.random() > 0.5;
                     const color = isOrange ? 'rgba(255, 134, 0, 0.4)' : 'rgba(117, 72, 151, 0.4)';
