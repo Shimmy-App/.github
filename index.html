@@ -207,16 +207,15 @@
 
         /* Tech Icon Styling */
         .tech-icon {
-            font-size: 2.2rem;
+            /* These properties are crucial for making image logos display correctly */
+            width: 50px; /* Set a fixed width for the image */
+            height: 50px; /* Set a fixed height for the image */
+            object-fit: contain; /* Ensures the image fits within the bounds without stretching */
             margin-bottom: 12px;
             display: block;
+            margin-left: auto; /* Centers the image horizontally */
+            margin-right: auto; /* Centers the image horizontally */
             filter: drop-shadow(0 0 8px rgba(255, 134, 0, 0.4)); /* Orange drop shadow */
-            /* Added for company logos */
-            width: 50px; /* Adjust as needed */
-            height: 50px; /* Adjust as needed */
-            object-fit: contain; /* Ensures logo fits within the box without distortion */
-            margin-left: auto; /* Center image within tech-item */
-            margin-right: auto; /* Center image within tech-item */
         }
 
         /* Tech Name Styling */
@@ -436,28 +435,27 @@
                 </h2>
                 <div class="tech-grid">
                     <a href="https://www.figma.com/design/zVLdirhn4Wsi31hcHk3nqv/SHM?node-id=8-222&t=VVjJ5z4joyuzYUbc-1" target="_blank" class="tech-item">
-                        <img src="./images/figma-logo.png" alt="Figma Logo" class="tech-icon">
+                        <img src="./images/figma.png" alt="Figma Logo" class="tech-icon">
                         <div class="tech-name">Figma</div>
                     </a>
                     <a href="https://stripe.com/" target="_blank" class="tech-item">
-                        <img src="./images/stripe-logo.png" alt="Stripe Logo" class="tech-icon">
+                        <img src="./images/stripe.png" alt="Stripe Logo" class="tech-icon">
                         <div class="tech-name">Stripe</div>
                     </a>
                     <a href="https://jira.atlassian.com/plugins/servlet/mobile?os_authType=basic#issue/JQL" target="_blank" class="tech-item">
-                        <img src="./images/jql-logo.png" alt="JQL Logo" class="tech-icon">
+                        <img src="./images/jql.png" alt="JQL Logo" class="tech-icon">
                         <div class="tech-name">JQL</div>
                     </a>
                     <a href="https://home.atlassian.com/" target="_blank" class="tech-item">
-                        <img src="./images/jira-logo.png" alt="Jira Logo" class="tech-icon">
+                        <img src="./images/jira.png" alt="Jira Logo" class="tech-icon">
                         <div class="tech-name">Jira</div>
                     </a>
                      <a href="https://home.atlassian.com/" target="_blank" class="tech-item">
-                        <img src="./images/confluence-logo.png" alt="Confluence Logo" class="tech-icon">
+                        <img src="./images/confluence.png" alt="Confluence Logo" class="tech-icon">
                         <div class="tech-name">Confluence</div>
                     </a>
                     <a href="https://example.com/ai-tools" target="_blank" class="tech-item">
-                        <img src="./images/ai-tools-logo.png" alt="AI Tools Logo" class="tech-icon">
-                        <div class="tech-name">AI Tools</div>
+                        <img src="./images/drive.png" alt="AI Tools Logo" class="tech-icon"> <div class="tech-name">AI Tools</div>
                     </a>
                 </div>
             </div>
@@ -480,24 +478,23 @@
                 </h2>
                 <div class="tech-grid">
                     <a href="https://flutter.dev/" target="_blank" class="tech-item">
-                        <img src="./images/flutter-logo.png" alt="Flutter Logo" class="tech-icon">
+                        <img src="./images/flutter.png" alt="Flutter Logo" class="tech-icon">
                         <div class="tech-name">Flutter</div>
                     </a>
                     <a href="https://github.com/orgs/Shimmy-App/repositories" target="_blank" class="tech-item">
-                        <img src="./images/github-logo.png" alt="GitHub Logo" class="tech-icon">
+                        <img src="./images/github.png" alt="GitHub Logo" class="tech-icon">
                         <div class="tech-name">GitHub</div>
                     </a>
                     <a href="https://api-shimmyapp.com/nova/" target="_blank" class="tech-item">
-                        <img src="./images/nova-logo.png" alt="Nova Logo" class="tech-icon">
+                        <img src="./images/nova.png" alt="Nova Logo" class="tech-icon">
                         <div class="tech-name">Nova</div>
                     </a>
                     <a href="https://firebase.google.com/" target="_blank" class="tech-item">
-                        <img src="./images/firebase-logo.png" alt="Firebase Logo" class="tech-icon">
+                        <img src="./images/firebase.png" alt="Firebase Logo" class="tech-icon">
                         <div class="tech-name">Firebase</div>
                     </a>
                     <a href="https://example.com/analytics" target="_blank" class="tech-item">
-                        <img src="./images/analytics-logo.png" alt="Analytics Logo" class="tech-icon">
-                        <div class="tech-name">Analytics</div>
+                        <img src="./images/analytics-logo.png" alt="Analytics Logo" class="tech-icon"> <div class="tech-name">Analytics</div>
                     </a>
                 </div>
             </div>
@@ -508,20 +505,18 @@
                 </h2>
                 <div class="tech-grid">
                     <a href="https://laravel.com/" target="_blank" class="tech-item">
-                        <img src="./images/laravel-logo.png" alt="Laravel Logo" class="tech-icon">
+                        <img src="./images/laravel.png" alt="Laravel Logo" class="tech-icon">
                         <div class="tech-name">Laravel</div>
                     </a>
                     <a href="https://www.php.net/" target="_blank" class="tech-item">
-                        <img src="./images/php-logo.png" alt="PHP Logo" class="tech-icon">
+                        <img src="./images/php.png" alt="PHP Logo" class="tech-icon">
                         <div class="tech-name">PHP</div>
                     </a>
                     <a href="https://example.com/apis" target="_blank" class="tech-item">
-                        <img src="./images/apis-logo.png" alt="APIs Logo" class="tech-icon">
-                        <div class="tech-name">APIs</div>
+                        <img src="./images/postman.png" alt="APIs Logo" class="tech-icon"> <div class="tech-name">APIs</div>
                     </a>
                     <a href="https://example.com/auth" target="_blank" class="tech-item">
-                        <img src="./images/auth-logo.png" alt="Auth Logo" class="tech-icon">
-                        <div class="tech-name">Auth</div>
+                        <img src="./images/typesense.png" alt="Auth Logo" class="tech-icon"> <div class="tech-name">Auth</div>
                     </a>
                 </div>
             </div>
@@ -532,28 +527,25 @@
                 </h2>
                 <div class="tech-grid">
                     <a href="https://aws.amazon.com/" target="_blank" class="tech-item">
-                        <img src="./images/aws-logo.png" alt="AWS Logo" class="tech-icon">
+                        <img src="./images/aws.png" alt="AWS Logo" class="tech-icon">
                         <div class="tech-name">AWS</div>
                     </a>
                     <a href="https://aws.amazon.com/s3/" target="_blank" class="tech-item">
-                        <img src="./images/s3-logo.png" alt="S3 Logo" class="tech-icon">
+                        <img src="./images/s3.png" alt="S3 Logo" class="tech-icon">
                         <div class="tech-name">S3</div>
                     </a>
                     <a href="https://aws.amazon.com/lambda/" target="_blank" class="tech-item">
-                        <img src="./images/lambda-logo.png" alt="Lambda Logo" class="tech-icon">
+                        <img src="./images/lambda.png" alt="Lambda Logo" class="tech-icon">
                         <div class="tech-name">Lambda</div>
                     </a>
                     <a href="https://example.com/ci-cd" target="_blank" class="tech-item">
-                        <img src="./images/ci-cd-logo.png" alt="CI/CD Logo" class="tech-icon">
-                        <div class="tech-name">CI/CD</div>
+                        <img src="./images/ci-cd.png" alt="CI/CD Logo" class="tech-icon"> <div class="tech-name">CI/CD</div>
                     </a>
                     <a href="https://example.com/monitoring" target="_blank" class="tech-item">
-                        <img src="./images/monitoring-logo.png" alt="Monitoring Logo" class="tech-icon">
-                        <div class="tech-name">Monitoring</div>
+                        <img src="./images/monitoring.png" alt="Monitoring Logo" class="tech-icon"> <div class="tech-name">Monitoring</div>
                     </a>
                     <a href="https://example.com/database" target="_blank" class="tech-item">
-                        <img src="./images/database-logo.png" alt="Database Logo" class="tech-icon">
-                        <div class="tech-name">Database</div>
+                        <img src="./images/database.png" alt="Database Logo" class="tech-icon"> <div class="tech-name">Database</div>
                     </a>
                 </div>
             </div>
