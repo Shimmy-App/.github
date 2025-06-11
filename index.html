@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Ecosystem Map</title>
-    <!-- Google Fonts - Baloo 2 (Imported for all text) -->
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         /* Global Reset */
@@ -287,13 +286,13 @@
             box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
         }
 
-        /* Style for the app.png image within the mobile screen - Made smaller */
+        /* Style for the app.png image within the mobile screen - Removed border and shadow */
         .app-image {
             width: 30%; /* Adjusted to roughly half of the previous 45%, or ~20% of screen width */
             height: 30%; /* Adjusted to roughly half of the previous 45%, or ~20% of screen height */
             object-fit: contain; /* Ensures the image fits without distortion */
-            border-radius: 20px; /* Slightly rounded corners for the app screen image */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+            border-radius: 0; /* Removed border-radius */
+            box-shadow: none; /* Removed box-shadow */
         }
 
         /* Mobile Screen Glow Effect (retained for overall phone visual) */
@@ -421,7 +420,6 @@
     <div class="floating-orb orb-orange" style="width: 100px; height: 100px; bottom: 20%; left: 20%; animation-delay: 10s;"></div>
     
     <div class="container">
-        <!-- Main Logo at the top -->
         <img src="./images/Name Logo.png" alt="Shimmy Logo" class="header-logo" onerror="this.onerror=null;this.src='https://placehold.co/200x50/B8B8B8/black?text=Shimmy%20Logo%20Missing'; console.error('Failed to load Shimmy Logo: ./images/Name Logo.png');">
         <h1 class="title">Product Ecosystem Map</h1>
         
@@ -431,7 +429,7 @@
                     🛠️ Development Tools
                 </h2>
                 <div class="tech-grid">
-                    <a href="https://www.figma.com/design/zVLdirhn4Wsi31hcHk3nqv/SHM?node-id=8-222&t=jWfWX0cw9mdefgb1-1" target="_blank" class="tech-item">
+                    <a href="https://www.figma.com/design/zVLdirhn4Wsi31hcHk3nqv/SHM?node-id=8-222&t=jWfWX0cwXmdefgb1-1" target="_blank" class="tech-item">
                         <img src="./images/figma.png" alt="Figma Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=Figma'; console.error('Failed to load Figma logo: ./images/figma.png');">
                         <div class="tech-name">Figma</div>
                     </a>
@@ -439,7 +437,6 @@
                         <img src="./images/stripe.png" alt="Stripe Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/754897/white?text=Stripe'; console.error('Failed to load Stripe logo: ./images/stripe.png');">
                         <div class="tech-name">Stripe</div>
                     </a>
-                    <!-- JQL replaced with G Drive -->
                     <a href="https://drive.google.com/drive/folders/1EQ0MYsdr30wSo-cU6k5-_luElZO2pQJN?usp=sharing" target="_blank" class="tech-item">
                         <img src="./images/drive.png" alt="G Drive Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=G%20Drive'; console.error('Failed to load G Drive logo: ./images/drive.png');">
                         <div class="tech-name">G Drive</div>
@@ -452,7 +449,6 @@
                         <img src="./images/confluence.png" alt="Confluence Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=Conf'; console.error('Failed to load Confluence logo: ./images/confluence.png');">
                         <div class="tech-name">Confluence</div>
                     </a>
-                    <!-- AI Tools placeholder remains, as drive.png is now used for G Drive -->
                     <a href="https://example.com/ai-tools" target="_blank" class="tech-item">
                         <img src="https://placehold.co/50x50/754897/white?text=AI" alt="AI Tools Logo" class="tech-icon" onerror="this.onerror=null;console.error('Failed to load AI Tools logo, using placeholder.');"> 
                         <div class="tech-name">AI Tools</div>
@@ -466,7 +462,6 @@
                 
                 <div class="mobile-device">
                     <div class="mobile-screen">
-                        <!-- app.png image added to the center of the phone, and sized appropriately -->
                         <img src="./images/app.png" alt="Mobile App Screen" class="app-image" onerror="this.onerror=null;this.src='https://placehold.co/180x350/FF8600/white?text=App%20Screen'; console.error('Failed to load app.png image for mobile screen.');">
                     </div>
                 </div>
@@ -494,7 +489,6 @@
                         <img src="./images/firebase.png" alt="Firebase Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/754897/white?text=Fire'; console.error('Failed to load Firebase logo: ./images/firebase.png');">
                         <div class="tech-name">Firebase</div>
                     </a>
-                    <!-- Analytics image updated to analytics.png -->
                     <a href="https://example.com/analytics" target="_blank" class="tech-item">
                         <img src="./images/analytics.png" alt="Analytics Logo" class="tech-icon" onerror="this.onerror=null;this.src='https://placehold.co/50x50/FF8600/white?text=Anal'; console.error('Failed to load Analytics logo: ./images/analytics.png');">
                         <div class="tech-name">Analytics</div>
