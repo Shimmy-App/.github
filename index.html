@@ -277,7 +277,7 @@
         .mobile-screen {
             width: 85%;
             height: 85%;
-            background: white; /* Changed to white background */
+            background: white; /* Changed to flat white background */
             border-radius: 30px;
             display: flex;
             align-items: center;
@@ -289,8 +289,8 @@
 
         /* Style for the app.png image within the mobile screen - Made smaller */
         .app-image {
-            width: 45%; /* Half of 90% from previous version */
-            height: 45%; /* Half of 90% from previous version */
+            width: 30%; /* Adjusted to roughly half of the previous 45%, or ~20% of screen width */
+            height: 30%; /* Adjusted to roughly half of the previous 45%, or ~20% of screen height */
             object-fit: contain; /* Ensures the image fits without distortion */
             border-radius: 20px; /* Slightly rounded corners for the app screen image */
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
@@ -466,7 +466,7 @@
                 
                 <div class="mobile-device">
                     <div class="mobile-screen">
-                        <!-- app.png image added to the center of the phone -->
+                        <!-- app.png image added to the center of the phone, and sized appropriately -->
                         <img src="./images/app.png" alt="Mobile App Screen" class="app-image" onerror="this.onerror=null;this.src='https://placehold.co/180x350/FF8600/white?text=App%20Screen'; console.error('Failed to load app.png image for mobile screen.');">
                     </div>
                 </div>
@@ -667,4 +667,4 @@
         document.head.appendChild(rippleStyle);
     </script>
 </body>
-</html> 
+</html>
