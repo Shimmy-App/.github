@@ -287,11 +287,11 @@
             box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
         }
 
-        /* Style for the app.png image within the mobile screen - Removed border and shadow, made to fill parent */
+        /* Style for the app.png image within the mobile screen - Reverted to smaller size and object-fit: contain */
         .app-image {
-            width: 100%; /* Fill the entire width of the parent (.mobile-screen) */
-            height: 100%; /* Fill the entire height of the parent (.mobile-screen) */
-            object-fit: cover; /* Changed to cover to fill the area, cropping if necessary */
+            width: 30%; /* Reverted to a smaller percentage */
+            height: 30%; /* Reverted to a smaller percentage */
+            object-fit: contain; /* Ensures the entire image is visible without cropping */
             border-radius: 0; /* Removed border-radius */
             box-shadow: none; /* Removed box-shadow */
         }
@@ -466,7 +466,7 @@
                 
                 <div class="mobile-device">
                     <div class="mobile-screen">
-                        <!-- app.png image updated to fill the entire screen -->
+                        <!-- app.png image updated to be small and central -->
                         <img src="./images/app.png" alt="Mobile App Screen" class="app-image" onerror="this.onerror=null;this.src='https://placehold.co/180x350/FF8600/white?text=App%20Screen'; console.error('Failed to load app.png image for mobile screen.');">
                     </div>
                 </div>
