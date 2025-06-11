@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,24 +15,25 @@
         /* Body Styling */
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 30%, #754897 70%, #FF8600 100%);
+            /* Flatter, darker purple background with subtle orange */
+            background: linear-gradient(135deg, #1A1A2E 0%, #2A1A4E 50%, #3A0A6E 100%); /* Darker purple base */
             min-height: 100vh;
             overflow-x: auto; /* Allows horizontal scrolling if content exceeds viewport */
             color: white;
             position: relative;
         }
 
-        /* Grid Background Effect */
+        /* Grid Background Effect - Adjusted for new background */
         .grid-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.15;
+            opacity: 0.1; /* Slightly less opaque */
             background-image: 
-                linear-gradient(rgba(255, 134, 0, 0.2) 1px, transparent 1px), /* Orange horizontal lines */
-                linear-gradient(90deg, rgba(117, 72, 151, 0.2) 1px, transparent 1px); /* Purple vertical lines */
+                linear-gradient(rgba(255, 134, 0, 0.15) 1px, transparent 1px), /* Subtle orange horizontal lines */
+                linear-gradient(90deg, rgba(255, 134, 0, 0.15) 1px, transparent 1px); /* Subtle orange vertical lines */
             background-size: 25px 25px; /* Size of each grid cell */
             z-index: 0; /* Ensures it stays behind other content */
             animation: gridMove 20s linear infinite; /* Animation for subtle grid movement */
@@ -51,6 +52,23 @@
             width: 100%;
             min-height: 100vh;
             padding: 40px;
+        }
+
+        /* Header Logo Styling */
+        .header-logo {
+            display: block; /* Makes it a block element so margin: auto works */
+            max-width: 200px; /* Adjust this value as needed, e.g., 150px, 250px */
+            height: auto; /* Ensures aspect ratio is maintained */
+            margin: 0 auto; /* Centers the logo horizontally */
+            margin-bottom: 30px; /* Adds space between the logo and the title */
+            filter: drop-shadow(0 0 25px rgba(255, 134, 0, 0.6)); /* Add a subtle glow */
+            animation: logoPulse 4s ease-in-out infinite; /* Optional: subtle animation */
+        }
+
+        /* Keyframes for Logo Pulse Animation */
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
         }
 
         /* Title Styling */
@@ -193,6 +211,12 @@
             margin-bottom: 12px;
             display: block;
             filter: drop-shadow(0 0 8px rgba(255, 134, 0, 0.4)); /* Orange drop shadow */
+            /* Added for company logos */
+            width: 50px; /* Adjust as needed */
+            height: 50px; /* Adjust as needed */
+            object-fit: contain; /* Ensures logo fits within the box without distortion */
+            margin-left: auto; /* Center image within tech-item */
+            margin-right: auto; /* Center image within tech-item */
         }
 
         /* Tech Name Styling */
@@ -397,58 +421,48 @@
 <body>
     <div class="grid-background"></div>
     
-    <!-- Floating orbs in the background for visual effect -->
     <div class="floating-orb orb-orange" style="width: 200px; height: 200px; top: 10%; left: 5%;"></div>
     <div class="floating-orb orb-purple" style="width: 150px; height: 150px; top: 60%; right: 10%; animation-delay: 5s;"></div>
     <div class="floating-orb orb-orange" style="width: 100px; height: 100px; bottom: 20%; left: 20%; animation-delay: 10s;"></div>
     
     <div class="container">
-        <h1 class="title">Product Ecosystem Map</h1>
         <img src="./images/Name Logo.png" alt="Shimmy Logo" class="header-logo">
+        <h1 class="title">Product Ecosystem Map</h1>
         
         <div class="product-map">
-            <!-- Development Tools Section -->
             <div class="section development-tools">
                 <h2 class="section-title">
                     🛠️ Development Tools
                 </h2>
                 <div class="tech-grid">
-                    <!-- Figma Icon and Link -->
                     <a href="https://www.figma.com/design/zVLdirhn4Wsi31hcHk3nqv/SHM?node-id=8-222&t=VVjJ5z4joyuzYUbc-1" target="_blank" class="tech-item">
-                        <span class="tech-icon">🎨</span>
+                        <img src="./images/figma-logo.png" alt="Figma Logo" class="tech-icon">
                         <div class="tech-name">Figma</div>
                     </a>
-                    <!-- Stripe -->
                     <div class="tech-item">
-                        <span class="tech-icon">💜</span>
+                        <img src="./images/stripe-logo.png" alt="Stripe Logo" class="tech-icon">
                         <div class="tech-name">Stripe</div>
                     </div>
-                    <!-- JQL -->
                     <div class="tech-item">
-                        <span class="tech-icon">⚡</span>
+                        <img src="./images/jql-logo.png" alt="JQL Logo" class="tech-icon">
                         <div class="tech-name">JQL</div>
                     </div>
-                    <!-- Jira Icon and Link -->
                     <a href="https://home.atlassian.com/" target="_blank" class="tech-item">
-                        <span class="tech-icon">🟦</span> <!-- Changed icon for Jira -->
+                        <img src="./images/jira-logo.png" alt="Jira Logo" class="tech-icon">
                         <div class="tech-name">Jira</div>
                     </a>
-                     <!-- Confluence Icon and Link -->
                      <a href="https://home.atlassian.com/" target="_blank" class="tech-item">
-                        <span class="tech-icon">📄</span> <!-- Icon for Confluence -->
+                        <img src="./images/confluence-logo.png" alt="Confluence Logo" class="tech-icon">
                         <div class="tech-name">Confluence</div>
                     </a>
-                    <!-- AI Tools -->
                     <div class="tech-item">
-                        <span class="tech-icon">🎯</span>
+                        <img src="./images/ai-tools-logo.png" alt="AI Tools Logo" class="tech-icon">
                         <div class="tech-name">AI Tools</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Mobile App Center Section -->
             <div class="section mobile-center">
-                <!-- Brand glow effects behind the mobile device -->
                 <div class="brand-glow-effect brand-glow-orange" style="top: 15%; left: 8%;"></div>
                 <div class="brand-glow-effect brand-glow-purple" style="bottom: 15%; right: 8%; animation-delay: 2.5s;"></div>
                 
@@ -460,103 +474,85 @@
                 <h3 style="margin-top: 25px; font-size: 1.3rem; background: linear-gradient(45deg, #FF8600, #754897); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Mobile Application</h3>
             </div>
 
-            <!-- Integrations Section -->
             <div class="section integrations">
                 <h2 class="section-title">
                     🔗 Integrations
                 </h2>
                 <div class="tech-grid">
-                    <!-- Flutter -->
                     <div class="tech-item">
-                        <span class="tech-icon">💻</span>
+                        <img src="./images/flutter-logo.png" alt="Flutter Logo" class="tech-icon">
                         <div class="tech-name">Flutter</div>
                     </div>
-                    <!-- GitHub Icon and Link -->
                     <a href="https://github.com/orgs/Shimmy-App/repositories" target="_blank" class="tech-item">
-                        <span class="tech-icon">🐙</span>
+                        <img src="./images/github-logo.png" alt="GitHub Logo" class="tech-icon">
                         <div class="tech-name">GitHub</div>
                     </a>
-                    <!-- Nova Icon and Link (replaces Azure) -->
                     <a href="https://api-shimmyapp.com/nova/" target="_blank" class="tech-item">
-                        <span class="tech-icon">✨</span> <!-- New icon for Nova -->
+                        <img src="./images/nova-logo.png" alt="Nova Logo" class="tech-icon">
                         <div class="tech-name">Nova</div>
                     </a>
-                    <!-- Firebase -->
                     <div class="tech-item">
-                        <span class="tech-icon">🔥</span>
+                        <img src="./images/firebase-logo.png" alt="Firebase Logo" class="tech-icon">
                         <div class="tech-name">Firebase</div>
                     </div>
-                    <!-- Analytics -->
                     <div class="tech-item">
-                        <span class="tech-icon">📊</span>
+                        <img src="./images/analytics-logo.png" alt="Analytics Logo" class="tech-icon">
                         <div class="tech-name">Analytics</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Backend Services Section -->
             <div class="section backend-services">
                 <h2 class="section-title">
                     ⚙️ Backend Services
                 </h2>
                 <div class="tech-grid">
-                    <!-- Laravel -->
                     <div class="tech-item">
-                        <span class="tech-icon">🔴</span>
+                        <img src="./images/laravel-logo.png" alt="Laravel Logo" class="tech-icon">
                         <div class="tech-name">Laravel</div>
                     </div>
-                    <!-- PHP -->
                     <div class="tech-item">
-                        <span class="tech-icon">🐘</span>
+                        <img src="./images/php-logo.png" alt="PHP Logo" class="tech-icon">
                         <div class="tech-name">PHP</div>
                     </div>
-                    <!-- APIs -->
                     <div class="tech-item">
-                        <span class="tech-icon">🛠️</span>
+                        <img src="./images/apis-logo.png" alt="APIs Logo" class="tech-icon">
                         <div class="tech-name">APIs</div>
                     </div>
-                    <!-- Auth -->
                     <div class="tech-item">
-                        <span class="tech-icon">🔐</span>
+                        <img src="./images/auth-logo.png" alt="Auth Logo" class="tech-icon">
                         <div class="tech-name">Auth</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Cloud Infrastructure Section -->
             <div class="section cloud-infrastructure">
                 <h2 class="section-title">
                     ☁️ Cloud Infrastructure
                 </h2>
                 <div class="tech-grid">
-                    <!-- AWS -->
                     <div class="tech-item">
-                        <span class="tech-icon">🟠</span>
+                        <img src="./images/aws-logo.png" alt="AWS Logo" class="tech-icon">
                         <div class="tech-name">AWS</div>
                     </div>
-                    <!-- S3 -->
                     <div class="tech-item">
-                        <span class="tech-icon">🗄️</span>
+                        <img src="./images/s3-logo.png" alt="S3 Logo" class="tech-icon">
                         <div class="tech-name">S3</div>
                     </div>
-                    <!-- Lambda -->
                     <div class="tech-item">
-                        <span class="tech-icon">⚡</span>
+                        <img src="./images/lambda-logo.png" alt="Lambda Logo" class="tech-icon">
                         <div class="tech-name">Lambda</div>
                     </div>
-                    <!-- CI/CD -->
                     <div class="tech-item">
-                        <span class="tech-icon">🔄</span>
+                        <img src="./images/ci-cd-logo.png" alt="CI/CD Logo" class="tech-icon">
                         <div class="tech-name">CI/CD</div>
                     </div>
-                    <!-- Monitoring -->
                     <div class="tech-item">
-                        <span class="tech-icon">📊</span>
+                        <img src="./images/monitoring-logo.png" alt="Monitoring Logo" class="tech-icon">
                         <div class="tech-name">Monitoring</div>
                     </div>
-                    <!-- Database -->
                     <div class="tech-item">
-                        <span class="tech-icon">🗃️</span>
+                        <img src="./images/database-logo.png" alt="Database Logo" class="tech-icon">
                         <div class="tech-name">Database</div>
                     </div>
                 </div>
