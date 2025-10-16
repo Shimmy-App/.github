@@ -854,7 +854,7 @@
                 
                 <div class="arch-layer-box">
                     <div class="arch-layer-title">Data & Storage Layer</div>
-                    <div class="arch-layer-desc">AWS RDS (MySQL), AWS S3, DynamoDB, Redis Cache</div>
+                    <div class="arch-layer-desc">AWS RDS (MySQL), AWS S3, Aurora, Elasticsearch Cache</div>
                 </div>
                 
                 <div class="arch-arrow">↓</div>
@@ -885,8 +885,8 @@
             <div class="tech-category">
                 <h4>Database</h4>
                 <p><strong>MySQL</strong> – Primary relational database hosted on AWS RDS</p>
-                <p><strong>DynamoDB</strong> – NoSQL database for specific use cases</p>
-                <p><strong>Redis</strong> – In-memory cache and session storage</p>
+                <p><strong>Aurora</strong> – High-performance NoSQL database for specific use cases</p>
+                <p><strong>Elasticsearch</strong> – Search engine and caching system</p>
             </div>
             
             <div class="tech-category">
@@ -897,13 +897,13 @@
                     <span class="aws-tag">ECS/EKS</span>
                     <span class="aws-tag">RDS (MySQL)</span>
                     <span class="aws-tag">S3</span>
-                    <span class="aws-tag">DynamoDB</span>
+                    <span class="aws-tag">Aurora</span>
                     <span class="aws-tag">SageMaker</span>
                     <span class="aws-tag">CloudFront</span>
                     <span class="aws-tag">VPC</span>
                     <span class="aws-tag">CloudWatch</span>
                     <span class="aws-tag">Kinesis</span>
-                    <span class="aws-tag">OpenSearch</span>
+                    <span class="aws-tag">Elasticsearch</span>
                     <span class="aws-tag">SQS/SNS</span>
                     <span class="aws-tag">Secrets Manager</span>
                 </div>
@@ -928,7 +928,7 @@
                     <li>OAuth integration (Google, Facebook, etc.)</li>
                     <li>Session management</li>
                 </ul>
-                <div class="storage-tag">📦 Storage: AWS RDS (MySQL) for user data, Redis for session cache</div>
+                <div class="storage-tag">📦 Storage: AWS RDS (MySQL) for user data, Elasticsearch for session cache</div>
             </div>
 
             <div class="service-card">
@@ -960,7 +960,7 @@
                     <li>A/B testing for recommendation algorithms</li>
                     <li>Content ranking optimisation</li>
                 </ul>
-                <div class="storage-tag">📦 Storage: DynamoDB for user preferences, SageMaker for ML models, Redis for cache</div>
+                <div class="storage-tag">📦 Storage: Aurora for user preferences, SageMaker for ML models, Elasticsearch for cache</div>
             </div>
 
             <div class="service-card">
@@ -1025,7 +1025,7 @@
                     <li>Search analytics and optimisation</li>
                     <li>Faceted search and filtering</li>
                 </ul>
-                <div class="storage-tag">📦 Storage: AWS OpenSearch/CloudSearch, Redis for search cache</div>
+                <div class="storage-tag">📦 Storage: AWS OpenSearch/CloudSearch, Elasticsearch for search cache</div>
             </div>
         </div>
 
@@ -1088,7 +1088,7 @@
 
         <h3>Performance</h3>
         <ul>
-            <li>Redis caching layer for frequently accessed data</li>
+            <li>Elasticsearch caching layer for frequently accessed data</li>
             <li>CloudFront CDN for static content and media</li>
             <li>Database query optimisation and indexing</li>
             <li>Asynchronous processing with message queues (SQS/SNS)</li>
@@ -1162,7 +1162,7 @@
         <ul>
             <li><strong>REST APIs</strong> – Synchronous HTTP/HTTPS requests for immediate responses</li>
             <li><strong>AWS SQS/SNS</strong> – Asynchronous messaging for background tasks and event-driven workflows</li>
-            <li><strong>Redis</strong> – Shared cache layer for session data and frequently accessed information</li>
+            <li><strong>Elasticsearch</strong> – Shared cache layer for session data and frequently accessed information</li>
             <li><strong>Event Bus</strong> – Event-driven architecture for loosely coupled services</li>
         </ul>
 
