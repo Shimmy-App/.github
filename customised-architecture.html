@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Architecture | Customised C# / Python System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 0;
+        }
+        
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid rgba(255, 119, 0, 0.3);
+        }
+        
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #ff7700;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff7700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navbar-brand span {
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        
+        .nav-links a:hover {
+            color: #ff7700;
+            background: rgba(255, 119, 0, 0.1);
+        }
+        
+        .nav-links a.active {
+            color: #ff7700;
+            background: rgba(255, 119, 0, 0.15);
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #ff7700 0%, #ff9900 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 119, 0, 0.4);
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 0 4rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 119, 0, 0.2);
+        }
+        
+        h1 {
+            color: #ff7700;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(255, 119, 0, 0.3);
+        }
+        
+        .subtitle {
+            color: #b0b0b0;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Section Headers */
+        h2 {
+            color: #ff7700;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            padding-left: 1rem;
+            border-left: 5px solid #ff7700;
+        }
+        
+        h3 {
+            color: #ffa500;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+        
+        h4 {
+            color: #ffb84d;
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.8rem;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+        
+        ul {
+            margin: 1rem 0 1.5rem 2rem;
+            color: #d0d0d0;
+        }
+        
+        li {
+            margin: 0.5rem 0;
+            line-height: 1.7;
+        }
+        
+        /* Architecture Overview Box */
+        .architecture-layer {
+            background: linear-gradient(135deg, rgba(255, 119, 0, 0.15) 0%, rgba(255, 165, 0, 0.1) 100%);
+            border: 2px solid rgba(255, 119, 0, 0.3);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(255, 119, 0, 0.2);
+        }
+        
+        .layer-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff7700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .layer-content p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            padding-left: 1rem;
+        }
+        
+        /* Tech Stack Box */
+        .tech-stack {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 119, 0, 0.2);
+        }
+        
+        .tech-category {
+            margin: 1.5rem 0;
+        }
+        
+        .tech-category h4 {
+            color: #ff7700;
+            margin-bottom: 0.8rem;
+        }
+        
+        /* AWS Tags */
+        .aws-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+        
+        .aws-tag {
+            background: linear-gradient(135deg, #ff9900 0%, #ff7700 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(255, 119, 0, 0.3);
+        }
+        
+        /* Microservices Grid */
+        .microservices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(255, 119, 0, 0.2);
+            border-radius: 15px;
+            padding: 0;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(255, 119, 0, 0.3);
+            border-color: rgba(255, 119, 0, 0.6);
+        }
+        
+        .service-header {
+            background: linear-gradient(135deg, #ff7700 0%, #ff9900 100%);
+            color: white;
+            padding: 1.5rem;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .service-tech {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        
+        .service-card ul {
+            padding: 1.5rem 1.5rem 1rem 2.5rem;
+            margin: 0;
+        }
+        
+        .service-card li {
+            margin: 0.7rem 0;
+            color: #d0d0d0;
+        }
+        
+        .storage-tag {
+            background: rgba(255, 193, 7, 0.15);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            color: #ffc107;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin: 1rem 1.5rem 1.5rem;
+            display: block;
+            font-weight: 600;
+        }
+        
+        /* Phase Boxes */
+        .phase-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 5px solid #ff7700;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .phase-title {
+            font-weight: bold;
+            color: #ff7700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .benefit-card {
+            background: linear-gradient(135deg, rgba(17, 153, 142, 0.2) 0%, rgba(56, 239, 125, 0.2) 100%);
+            border: 2px solid rgba(56, 239, 125, 0.3);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(56, 239, 125, 0.3);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-title {
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #38ef7d;
+        }
+        
+        .benefit-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #d0d0d0;
+        }
+        
+        /* Flow Diagram */
+        .flow-diagram {
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px solid rgba(255, 119, 0, 0.2);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .flow-step {
+            background: linear-gradient(135deg, #ff7700 0%, #ff9900 100%);
+            color: white;
+            padding: 1.2rem 2rem;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 10px;
+            font-weight: 600;
+            min-width: 180px;
+            box-shadow: 0 4px 15px rgba(255, 119, 0, 0.3);
+        }
+        
+        .flow-arrow {
+            font-size: 2rem;
+            color: #ff7700;
+            margin: 0 10px;
+            display: inline-block;
+        }
+        
+        /* Note Box */
+        .note-box {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 5px solid #3498db;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        .note-box h4 {
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+        
+        .note-box ul {
+            margin-left: 1.5rem;
+        }
+        
+        .note-box li {
+            margin: 0.7rem 0;
+            color: #d0d0d0;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(26, 26, 46, 0.95);
+            color: #b0b0b0;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 2px solid rgba(255, 119, 0, 0.3);
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 46, 0.98);
+                padding: 1rem 2rem;
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: #ff7700;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            
+            .microservices-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .flow-step {
+                display: block;
+                margin: 10px auto;
+            }
+            
+            .flow-arrow {
+                display: block;
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="Product Map.html" class="navbar-brand">
+                <span>⚙️</span> Backend Architecture
+            </a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                ☰
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="Product Map.html">Home</a></li>
+                <li><a href="#" class="active">Architecture</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#migration">Migration</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Back Button -->
+        <a href="Product Map.html" class="back-button">
+            ← Back to Product Map
+        </a>
+        
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Customised C# / Python Backend Architecture</h1>
+            <p class="subtitle">A modern microservices architecture migrating from PHP/Laravel to C# and Python, leveraging AWS infrastructure for scalability and performance.</p>
+        </div>
+
+        <!-- Architecture Overview -->
+        <div class="architecture-layer">
+            <div class="layer-title">System Architecture Overview</div>
+            <div class="layer-content">
+                <p><strong>Client Layer:</strong> Flutter/Dart mobile applications and Vue.js web application</p>
+                <p><strong>↓</strong></p>
+                <p><strong>API Gateway Layer:</strong> C# / .NET handles request routing, authentication, rate limiting, and load balancing</p>
+                <p><strong>↓</strong></p>
+                <p><strong>Microservices Layer:</strong> Seven independent services for login, content, recommendations, moderation, tracking, payments, and search</p>
+                <p><strong>↓</strong></p>
+                <p><strong>Data & Storage Layer:</strong> AWS RDS (MySQL), AWS S3, DynamoDB, Redis Cache</p>
+                <p><strong>↓</strong></p>
+                <p><strong>Infrastructure Layer:</strong> AWS EC2, Lambda, ECS/EKS, CloudWatch, VPC, and supporting services</p>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <h2>Technology Stack</h2>
+        
+        <div class="tech-stack">
+            <div class="tech-category">
+                <h4>Backend Languages</h4>
+                <p><strong>C# / .NET 8+</strong> – Core business logic, API services, and high-performance services</p>
+                <p><strong>Python 3.11+</strong> – AI/ML models, data processing, and moderation engine</p>
+            </div>
+            
+            <div class="tech-category">
+                <h4>Frontend</h4>
+                <p><strong>Flutter/Dart</strong> – Mobile applications (iOS & Android)</p>
+                <p><strong>Vue.js 3</strong> – Web application</p>
+            </div>
+            
+            <div class="tech-category">
+                <h4>Database</h4>
+                <p><strong>MySQL</strong> – Primary relational database hosted on AWS RDS</p>
+                <p><strong>DynamoDB</strong> – NoSQL database for specific use cases</p>
+                <p><strong>Redis</strong> – In-memory cache and session storage</p>
+            </div>
+            
+            <div class="tech-category">
+                <h4>AWS Services Integration</h4>
+                <div class="aws-services">
+                    <span class="aws-tag">EC2</span>
+                    <span class="aws-tag">Lambda</span>
+                    <span class="aws-tag">ECS/EKS</span>
+                    <span class="aws-tag">RDS (MySQL)</span>
+                    <span class="aws-tag">S3</span>
+                    <span class="aws-tag">DynamoDB</span>
+                    <span class="aws-tag">SageMaker</span>
+                    <span class="aws-tag">CloudFront</span>
+                    <span class="aws-tag">VPC</span>
+                    <span class="aws-tag">CloudWatch</span>
+                    <span class="aws-tag">Kinesis</span>
+                    <span class="aws-tag">OpenSearch</span>
+                    <span class="aws-tag">SQS/SNS</span>
+                    <span class="aws-tag">Secrets Manager</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Microservices -->
+        <h2 id="services">Microservices Architecture</h2>
+        <p>Each microservice operates independently with its own deployment pipeline, scaling configuration, and data storage. Services communicate via REST APIs and AWS messaging services (SQS/SNS).</p>
+
+        <div class="microservices-grid">
+            <div class="service-card">
+                <div class="service-header">
+                    1. Login & Account Update Engine
+                    <div class="service-tech">C# / .NET</div>
+                </div>
+                <ul>
+                    <li>User authentication and authorisation</li>
+                    <li>JWT token management</li>
+                    <li>Profile updates and management</li>
+                    <li>Password reset and email verification</li>
+                    <li>OAuth integration (Google, Facebook, etc.)</li>
+                    <li>Session management</li>
+                </ul>
+                <div class="storage-tag">📦 Storage: AWS RDS (MySQL) for user data, Redis for session cache</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    2. Content Engine
+                    <div class="service-tech">C# / .NET</div>
+                </div>
+                <ul>
+                    <li>Content creation, editing, and deletion</li>
+                    <li>Media upload and processing</li>
+                    <li>Content versioning and history</li>
+                    <li>CDN integration for fast delivery</li>
+                    <li>Content categorisation and tagging</li>
+                    <li>Metadata management</li>
+                </ul>
+                <div class="storage-tag">📦 Storage: AWS S3 for media files, AWS RDS (MySQL) for metadata, CloudFront for CDN</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    3. Recommendations Engine
+                    <div class="service-tech">Python</div>
+                </div>
+                <ul>
+                    <li>Machine learning-based recommendations</li>
+                    <li>User behaviour analysis</li>
+                    <li>Collaborative and content-based filtering</li>
+                    <li>Real-time personalisation</li>
+                    <li>A/B testing for recommendation algorithms</li>
+                    <li>Content ranking optimisation</li>
+                </ul>
+                <div class="storage-tag">📦 Storage: DynamoDB for user preferences, SageMaker for ML models, Redis for cache</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    4. Moderation Engine
+                    <div class="service-tech">Python</div>
+                </div>
+                <ul>
+                    <li><strong>Custom moderation system with Google Gemma LLM</strong></li>
+                    <li>Text content moderation</li>
+                    <li>Sentiment analysis</li>
+                    <li>Automated content flagging</li>
+                    <li>Manual review queue management</li>
+                    <li>Toxicity scoring and reporting</li>
+                </ul>
+                <div class="storage-tag">📦 Storage: AWS S3 for model storage, Lambda/EC2 for processing, AWS RDS (MySQL) for moderation logs</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    5. Tracking Engine
+                    <div class="service-tech">C# / .NET</div>
+                </div>
+                <ul>
+                    <li>User behaviour analytics</li>
+                    <li>Event tracking and aggregation</li>
+                    <li>Performance monitoring</li>
+                    <li>Conversion tracking</li>
+                    <li>Real-time dashboards</li>
+                    <li>Custom event reporting</li>
+                </ul>
+                <div class="storage-tag">📦 Storage: AWS Kinesis for streaming data, CloudWatch for metrics and logs</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    6. Payments Engine
+                    <div class="service-tech">C# / .NET</div>
+                </div>
+                <ul>
+                    <li>Payment processing integration (Stripe, PayPal)</li>
+                    <li>Transaction management and tracking</li>
+                    <li>Customer payment profile management</li>
+                    <li>Recurring payment support</li>
+                    <li>Receipt generation and email notifications</li>
+                    <li>Fraud detection and prevention</li>
+                </ul>
+                <div class="storage-tag">📦 Storage: AWS RDS (MySQL) for transaction records, Secrets Manager for API keys</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-header">
+                    7. Search Engine
+                    <div class="service-tech">Python / C#</div>
+                </div>
+                <ul>
+                    <li>Full-text search capabilities</li>
+                    <li>Elasticsearch/OpenSearch integration</li>
+                    <li>Search result ranking and relevance</li>
+                    <li>Autocomplete and suggestions</li>
+                    <li>Search analytics and optimisation</li>
+                    <li>Faceted search and filtering</li>
+                </ul>
+                <div class="storage-tag">📦 Storage: AWS OpenSearch/CloudSearch, Redis for search cache</div>
+            </div>
+        </div>
+
+        <!-- Migration Strategy -->
+        <h2 id="migration">Migration Strategy</h2>
+        <p>Gradual migration from PHP/Laravel to C#/Python with zero downtime and parallel operation during transition.</p>
+
+        <div class="phase-box">
+            <div class="phase-title">Phase 1: Foundation (Current)</div>
+            <ul>
+                <li>Confirm AWS infrastructure (VPC, EC2, RDS MySQL)</li>
+                <li>Deploy API Gateway layer in C#/.NET</li>
+                <li>Migrate Login & Account Engine</li>
+                <li>Establish CI/CD pipelines</li>
+                <li>Configure monitoring and logging</li>
+            </ul>
+        </div>
+
+        <div class="phase-box">
+            <div class="phase-title">Phase 2: Core Services</div>
+            <ul>
+                <li>Migrate Content Engine to C#/.NET</li>
+                <li>Deploy Moderation Engine with Python/Gemma LLM</li>
+                <li>Integrate Search Engine (OpenSearch)</li>
+                <li>Set up S3 and CloudFront for media delivery</li>
+            </ul>
+        </div>
+
+        <div class="phase-box">
+            <div class="phase-title">Phase 3: Advanced Features</div>
+            <ul>
+                <li>Deploy Recommendations Engine with Python ML models</li>
+                <li>Migrate Tracking Engine with real-time analytics</li>
+                <li>Implement Payments Engine with third-party integrations</li>
+                <li>Optimise database queries and add read replicas</li>
+            </ul>
+        </div>
+
+        <div class="phase-box">
+            <div class="phase-title">Phase 4: Completion</div>
+            <ul>
+                <li>Complete PHP/Laravel deprecation</li>
+                <li>Final performance optimisation</li>
+                <li>Comprehensive load testing</li>
+                <li>Complete monitoring and alerting setup</li>
+                <li>Documentation and knowledge transfer</li>
+            </ul>
+        </div>
+
+        <!-- Key Features -->
+        <h2>Key Architectural Features</h2>
+
+        <h3>Scalability</h3>
+        <ul>
+            <li>Horizontal scaling with container orchestration (ECS/EKS)</li>
+            <li>Auto-scaling based on CPU, memory, and custom metrics</li>
+            <li>Load balancing across multiple instances</li>
+            <li>Independent scaling for each microservice</li>
+        </ul>
+
+        <h3>Performance</h3>
+        <ul>
+            <li>Redis caching layer for frequently accessed data</li>
+            <li>CloudFront CDN for static content and media</li>
+            <li>Database query optimisation and indexing</li>
+            <li>Asynchronous processing with message queues (SQS/SNS)</li>
+            <li>Connection pooling and efficient resource management</li>
+        </ul>
+
+        <h3>Security</h3>
+        <ul>
+            <li>AWS VPC network isolation and security groups</li>
+            <li>IAM role-based access control</li>
+            <li>AWS Secrets Manager for credential management</li>
+            <li>End-to-end encryption (TLS/SSL)</li>
+            <li>Regular security audits and penetration testing</li>
+            <li>DDoS protection with AWS Shield</li>
+        </ul>
+
+        <h3>Monitoring & Observability</h3>
+        <ul>
+            <li>CloudWatch for metrics, logs, and dashboards</li>
+            <li>Real-time alerting for critical issues</li>
+            <li>Application Performance Monitoring (APM)</li>
+            <li>Distributed tracing across microservices</li>
+            <li>Error tracking and reporting</li>
+        </ul>
+
+        <!-- Benefits -->
+        <h2>Benefits of New Architecture</h2>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <div class="benefit-title">Performance</div>
+                <div class="benefit-desc">3-5x faster response times with C#/.NET and optimised Python processing</div>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">📈</div>
+                <div class="benefit-title">Scalability</div>
+                <div class="benefit-desc">Independent scaling of each microservice based on demand</div>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">🔧</div>
+                <div class="benefit-title">Maintainability</div>
+                <div class="benefit-desc">Clear separation of concerns with easier debugging and updates</div>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">🤖</div>
+                <div class="benefit-title">AI/ML Integration</div>
+                <div class="benefit-desc">Native Python support for advanced ML features and models</div>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <div class="benefit-title">Cost Efficiency</div>
+                <div class="benefit-desc">Pay only for resources used with serverless and auto-scaling options</div>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">🚀</div>
+                <div class="benefit-title">Future-Proof</div>
+                <div class="benefit-desc">Easily add new services and features without affecting existing systems</div>
+            </div>
+        </div>
+
+        <!-- Inter-Service Communication -->
+        <h2>Inter-Service Communication</h2>
+        <p>Microservices communicate through multiple patterns to ensure reliability and performance:</p>
+        
+        <ul>
+            <li><strong>REST APIs</strong> – Synchronous HTTP/HTTPS requests for immediate responses</li>
+            <li><strong>AWS SQS/SNS</strong> – Asynchronous messaging for background tasks and event-driven workflows</li>
+            <li><strong>Redis</strong> – Shared cache layer for session data and frequently accessed information</li>
+            <li><strong>Event Bus</strong> – Event-driven architecture for loosely coupled services</li>
+        </ul>
+
+        <!-- Deployment -->
+        <h2>Deployment Architecture</h2>
+        
+        <div class="flow-diagram">
+            <div class="flow-step">GitHub Repository</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">CI/CD Pipeline<br>(GitHub Actions / AWS CodePipeline)</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Docker Build & Test</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">AWS ECR<br>(Container Registry)</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">AWS ECS/EKS Cluster<br>(Production)</div>
+        </div>
+
+        <div class="note-box">
+            <h4>Deployment Notes</h4>
+            <ul>
+                <li>Each microservice has its own CI/CD pipeline for independent deployments</li>
+                <li>Blue-green deployment strategy for zero-downtime updates</li>
+                <li>Automated testing at each stage (unit, integration, performance)</li>
+                <li>Infrastructure as Code (IaC) using AWS CloudFormation or Terraform</li>
+                <li>Environment-specific configurations managed through AWS Systems Manager</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Customised Backend Architecture Documentation</p>
+        <p>Built with C# / .NET, Python, and AWS Infrastructure</p>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const navbar = document.querySelector('.navbar');
+            const navLinks = document.getElementById('navLinks');
+            if (!navbar.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,675 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Ecosystem Map</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 30%, #754897 70%, #FF8600 100%);
+            min-height: 100vh;
+            overflow-x: auto; /* Allows horizontal scrolling if content exceeds viewport */
+            color: white;
+            position: relative;
+        }
+
+        /* Grid Background Effect */
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            background-image: 
+                linear-gradient(rgba(255, 134, 0, 0.2) 1px, transparent 1px), /* Orange horizontal lines */
+                linear-gradient(90deg, rgba(117, 72, 151, 0.2) 1px, transparent 1px); /* Purple vertical lines */
+            background-size: 25px 25px; /* Size of each grid cell */
+            z-index: 0; /* Ensures it stays behind other content */
+            animation: gridMove 20s linear infinite; /* Animation for subtle grid movement */
+        }
+
+        /* Keyframes for Grid Movement */
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(25px, 25px); }
+        }
+
+        /* Main Container for Product Map */
+        .container {
+            position: relative;
+            z-index: 1; /* Ensures content is above the background */
+            width: 100%;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        /* Title Styling */
+        .title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #FF8600, #754897, #FF8600, #754897); /* Gradient for text fill */
+            background-size: 300% 300%; /* Larger background for animation */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: brandGradientShift 3s ease-in-out infinite; /* Animates the gradient */
+            margin-bottom: 50px;
+            text-shadow: 0 0 30px rgba(255, 134, 0, 0.4); /* Subtle orange text shadow */
+            filter: drop-shadow(0 0 20px rgba(117, 72, 151, 0.3)); /* Purple drop shadow */
+        }
+
+        /* Keyframes for Title Gradient Shift */
+        @keyframes brandGradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Product Map Grid Layout */
+        .product-map {
+            display: grid;
+            grid-template-columns: 1fr 400px 1fr; /* Three columns: flexible, fixed, flexible */
+            grid-template-rows: auto auto auto; /* Auto rows for content */
+            gap: 40px; /* Spacing between grid items */
+            max-width: 1400px;
+            margin: 0 auto; /* Center the map */
+            position: relative;
+        }
+
+        /* Individual Section Styling (Development Tools, Integrations, etc.) */
+        .section {
+            background: rgba(255, 255, 255, 0.05); /* Semi-transparent white background */
+            backdrop-filter: blur(20px); /* Frosted glass effect */
+            border-radius: 24px;
+            border: 1px solid rgba(255, 134, 0, 0.2); /* Orange border */
+            padding: 30px;
+            transition: all 0.4s ease; /* Smooth transitions for hover effects */
+            position: relative;
+            overflow: hidden; /* Hides overflowing shimmer effect */
+        }
+
+        /* Shimmer Effect at the Top of Each Section */
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FF8600, #754897, #FF8600, transparent); /* Gradient for shimmer */
+            animation: brandShimmer 2.5s infinite; /* Shimmer animation */
+        }
+
+        /* Keyframes for Shimmer Effect */
+        @keyframes brandShimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Section Hover Effects */
+        .section:hover {
+            transform: translateY(-12px); /* Lifts the section */
+            box-shadow: 
+                0 25px 50px rgba(255, 134, 0, 0.2), /* Orange shadow */
+                0 15px 30px rgba(117, 72, 151, 0.2); /* Purple shadow */
+            border-color: rgba(255, 134, 0, 0.4); /* Darker orange border on hover */
+            background: rgba(255, 255, 255, 0.08); /* Slightly less transparent background */
+        }
+
+        /* Section Title Styling */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #FF8600, #754897); /* Gradient for title text */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 12px; /* Spacing between icon and text */
+        }
+
+        /* Grid for Tech Items within Sections */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid columns */
+            gap: 18px;
+        }
+
+        /* Individual Tech Item Styling */
+        .tech-item {
+            background: linear-gradient(135deg, rgba(255, 134, 0, 0.1), rgba(117, 72, 151, 0.1)); /* Subtle gradient background */
+            border-radius: 18px;
+            padding: 22px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 134, 0, 0.2); /* Orange border */
+            cursor: pointer;
+            position: relative;
+            overflow: hidden; /* Hides overflowing hover effect */
+        }
+
+        /* Inner Shimmer Effect on Tech Item Hover */
+        .tech-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%; /* Starts off-screen to the left */
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 134, 0, 0.2), rgba(117, 72, 151, 0.2), transparent); /* Shimmer gradient */
+            transition: left 0.6s ease; /* Smooth transition for shimmer */
+        }
+
+        /* Moves shimmer effect to the right on hover */
+        .tech-item:hover::before {
+            left: 100%;
+        }
+
+        /* Tech Item Hover Effects */
+        .tech-item:hover {
+            transform: scale(1.08) rotateY(5deg); /* Slightly enlarges and rotates */
+            background: linear-gradient(135deg, rgba(255, 134, 0, 0.2), rgba(117, 72, 151, 0.2)); /* Darker background */
+            box-shadow: 
+                0 12px 35px rgba(255, 134, 0, 0.3), /* Orange shadow */
+                0 8px 25px rgba(117, 72, 151, 0.2); /* Purple shadow */
+            border-color: rgba(255, 134, 0, 0.4); /* Darker orange border */
+        }
+
+        /* Tech Icon Styling */
+        .tech-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            display: block;
+            filter: drop-shadow(0 0 8px rgba(255, 134, 0, 0.4)); /* Orange drop shadow */
+        }
+
+        /* Tech Name Styling */
+        .tech-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #e8e8e8;
+            text-shadow: 0 0 10px rgba(255, 134, 0, 0.2); /* Subtle text shadow */
+        }
+
+        /* Mobile Center Section Styling */
+        .mobile-center {
+            grid-column: 2; /* Centers it in the second column */
+            grid-row: 2; /* Places it in the second row */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255, 134, 0, 0.15), rgba(117, 72, 151, 0.15));
+            position: relative;
+            border: 2px solid rgba(255, 134, 0, 0.3);
+        }
+
+        /* Mobile Device (Phone) Styling */
+        .mobile-device {
+            width: 220px;
+            height: 420px;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d); /* Dark gradient for phone body */
+            border-radius: 40px;
+            border: 8px solid #000; /* Black border for phone frame */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 
+                0 25px 70px rgba(0, 0, 0, 0.4), /* Dark shadow */
+                0 0 40px rgba(255, 134, 0, 0.2); /* Orange glow */
+            animation: brandFloat 3.5s ease-in-out infinite; /* Floating animation */
+        }
+
+        /* Keyframes for Mobile Device Floating Animation */
+        @keyframes brandFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                box-shadow: 
+                    0 25px 70px rgba(0, 0, 0, 0.4),
+                    0 0 40px rgba(255, 134, 0, 0.2);
+            }
+            50% { 
+                transform: translateY(-12px) rotate(1deg); /* Slight lift and rotation */
+                box-shadow: 
+                    0 35px 80px rgba(0, 0, 0, 0.4),
+                    0 0 50px rgba(117, 72, 151, 0.3); /* Purple glow at peak */
+            }
+        }
+
+        /* Mobile Screen Styling */
+        .mobile-screen {
+            width: 85%;
+            height: 85%;
+            background: linear-gradient(135deg, #FF8600 0%, #754897 100%); /* Brand gradient for screen */
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+        }
+
+        /* Mobile Screen Glow Effect */
+        .mobile-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%); /* Light band for glow */
+            animation: brandScreenGlow 3s infinite; /* Animates the glow */
+        }
+
+        /* Keyframes for Mobile Screen Glow */
+        @keyframes brandScreenGlow {
+            0%, 100% { 
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            50% { 
+                opacity: 1;
+                transform: translateX(100%);
+            }
+        }
+
+        /* Lock Icon on Mobile Screen */
+        .lock-icon {
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.7); /* White glow effect */
+            z-index: 1;
+            position: relative;
+            animation: iconPulse 2s infinite; /* Pulsing animation */
+        }
+
+        /* Keyframes for Icon Pulse */
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Brand Glow Effects (behind mobile device) */
+        .brand-glow-effect {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            pointer-events: none; /* Allows clicks to pass through */
+            animation: brandGlow 5s ease-in-out infinite; /* Animates the glow */
+        }
+
+        .brand-glow-orange {
+            background: radial-gradient(circle, rgba(255, 134, 0, 0.4) 0%, transparent 70%);
+        }
+
+        .brand-glow-purple {
+            background: radial-gradient(circle, rgba(117, 72, 151, 0.4) 0%, transparent 70%);
+        }
+
+        /* Keyframes for Brand Glow */
+        @keyframes brandGlow {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                opacity: 0.4;
+            }
+            50% { 
+                transform: scale(1.8) rotate(180deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* Grid Area Assignments for Sections */
+        .development-tools { grid-column: 1; grid-row: 1; }
+        .integrations { grid-column: 3; grid-row: 1; }
+        .backend-services { grid-column: 1; grid-row: 3; }
+        .cloud-infrastructure { grid-column: 3; grid-row: 3; }
+
+        /* Floating orbs in background */
+        .floating-orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatOrb 15s ease-in-out infinite; /* Floating animation */
+        }
+
+        .orb-orange {
+            background: radial-gradient(circle, rgba(255, 134, 0, 0.1) 0%, transparent 70%);
+        }
+
+        .orb-purple {
+            background: radial-gradient(circle, rgba(117, 72, 151, 0.1) 0%, transparent 70%);
+        }
+
+        /* Keyframes for Floating Orbs */
+        @keyframes floatOrb {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            33% { 
+                transform: translate(100px, -50px) scale(1.2);
+                opacity: 0.6;
+            }
+            66% { 
+                transform: translate(-50px, 100px) scale(0.8);
+                opacity: 0.4;
+            }
+        }
+
+        /* Responsive Adjustments for Smaller Screens */
+        @media (max-width: 1024px) {
+            .product-map {
+                grid-template-columns: 1fr; /* Single column layout */
+                grid-template-rows: auto; /* Auto rows */
+            }
+            
+            /* Reorder sections for better flow on mobile */
+            .mobile-center {
+                grid-column: 1;
+                grid-row: 3;
+                order: 3; /* Explicit order for mobile layout */
+            }
+            
+            .development-tools { order: 1; }
+            .integrations { order: 2; }
+            .backend-services { order: 4; }
+            .cloud-infrastructure { order: 5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-background"></div>
+    
+    <!-- Floating orbs in the background for visual effect -->
+    <div class="floating-orb orb-orange" style="width: 200px; height: 200px; top: 10%; left: 5%;"></div>
+    <div class="floating-orb orb-purple" style="width: 150px; height: 150px; top: 60%; right: 10%; animation-delay: 5s;"></div>
+    <div class="floating-orb orb-orange" style="width: 100px; height: 100px; bottom: 20%; left: 20%; animation-delay: 10s;"></div>
+    
+    <div class="container">
+        <h1 class="title">Product Ecosystem Map</h1>
+        <img src="./images/Name Logo.png" alt="Shimmy Logo" class="header-logo">
+        
+        <div class="product-map">
+            <!-- Development Tools Section -->
+            <div class="section development-tools">
+                <h2 class="section-title">
+                    🛠️ Development Tools
+                </h2>
+                <div class="tech-grid">
+                    <!-- Figma Icon and Link -->
+                    <a href="https://www.figma.com/design/zVLdirhn4Wsi31hcHk3nqv/SHM?node-id=8-222&t=VVjJ5z4joyuzYUbc-1" target="_blank" class="tech-item">
+                        <span class="tech-icon">🎨</span>
+                        <div class="tech-name">Figma</div>
+                    </a>
+                    <!-- Stripe -->
+                    <div class="tech-item">
+                        <span class="tech-icon">💜</span>
+                        <div class="tech-name">Stripe</div>
+                    </div>
+                    <!-- JQL -->
+                    <div class="tech-item">
+                        <span class="tech-icon">⚡</span>
+                        <div class="tech-name">JQL</div>
+                    </div>
+                    <!-- Jira Icon and Link -->
+                    <a href="https://home.atlassian.com/" target="_blank" class="tech-item">
+                        <span class="tech-icon">🟦</span> <!-- Changed icon for Jira -->
+                        <div class="tech-name">Jira</div>
+                    </a>
+                     <!-- Confluence Icon and Link -->
+                     <a href="https://home.atlassian.com/" target="_blank" class="tech-item">
+                        <span class="tech-icon">📄</span> <!-- Icon for Confluence -->
+                        <div class="tech-name">Confluence</div>
+                    </a>
+                    <!-- AI Tools -->
+                    <div class="tech-item">
+                        <span class="tech-icon">🎯</span>
+                        <div class="tech-name">AI Tools</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile App Center Section -->
+            <div class="section mobile-center">
+                <!-- Brand glow effects behind the mobile device -->
+                <div class="brand-glow-effect brand-glow-orange" style="top: 15%; left: 8%;"></div>
+                <div class="brand-glow-effect brand-glow-purple" style="bottom: 15%; right: 8%; animation-delay: 2.5s;"></div>
+                
+                <div class="mobile-device">
+                    <div class="mobile-screen">
+                        <div class="lock-icon">🔒</div>
+                    </div>
+                </div>
+                <h3 style="margin-top: 25px; font-size: 1.3rem; background: linear-gradient(45deg, #FF8600, #754897); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Mobile Application</h3>
+            </div>
+
+            <!-- Integrations Section -->
+            <div class="section integrations">
+                <h2 class="section-title">
+                    🔗 Integrations
+                </h2>
+                <div class="tech-grid">
+                    <!-- Flutter -->
+                    <div class="tech-item">
+                        <span class="tech-icon">💻</span>
+                        <div class="tech-name">Flutter</div>
+                    </div>
+                    <!-- GitHub Icon and Link -->
+                    <a href="https://github.com/orgs/Shimmy-App/repositories" target="_blank" class="tech-item">
+                        <span class="tech-icon">🐙</span>
+                        <div class="tech-name">GitHub</div>
+                    </a>
+                    <!-- Nova Icon and Link (replaces Azure) -->
+                    <a href="https://api-shimmyapp.com/nova/" target="_blank" class="tech-item">
+                        <span class="tech-icon">✨</span> <!-- New icon for Nova -->
+                        <div class="tech-name">Nova</div>
+                    </a>
+                    <!-- Firebase -->
+                    <div class="tech-item">
+                        <span class="tech-icon">🔥</span>
+                        <div class="tech-name">Firebase</div>
+                    </div>
+                    <!-- Analytics -->
+                    <div class="tech-item">
+                        <span class="tech-icon">📊</span>
+                        <div class="tech-name">Analytics</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backend Services Section -->
+            <div class="section backend-services">
+                <h2 class="section-title">
+                    ⚙️ Backend Services
+                </h2>
+                <div class="tech-grid">
+                    <!-- Laravel -->
+                    <div class="tech-item">
+                        <span class="tech-icon">🔴</span>
+                        <div class="tech-name">Laravel</div>
+                    </div>
+                    <!-- PHP -->
+                    <div class="tech-item">
+                        <span class="tech-icon">🐘</span>
+                        <div class="tech-name">PHP</div>
+                    </div>
+                    <!-- APIs -->
+                    <div class="tech-item">
+                        <span class="tech-icon">🛠️</span>
+                        <div class="tech-name">APIs</div>
+                    </div>
+                    <!-- Auth -->
+                    <div class="tech-item">
+                        <span class="tech-icon">🔐</span>
+                        <div class="tech-name">Auth</div>
+                    </div>
+                    <!-- Customised Architecture -->
+                    <div class="tech-item" onclick="window.open('customised-architecture.html', '_blank')">
+                        <span class="tech-icon">🏗️</span>
+                        <div class="tech-name">Customised Architecture</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud Infrastructure Section -->
+            <div class="section cloud-infrastructure">
+                <h2 class="section-title">
+                    ☁️ Cloud Infrastructure
+                </h2>
+                <div class="tech-grid">
+                    <!-- AWS -->
+                    <div class="tech-item">
+                        <span class="tech-icon">🟠</span>
+                        <div class="tech-name">AWS</div>
+                    </div>
+                    <!-- S3 -->
+                    <div class="tech-item">
+                        <span class="tech-icon">🗄️</span>
+                        <div class="tech-name">S3</div>
+                    </div>
+                    <!-- Lambda -->
+                    <div class="tech-item">
+                        <span class="tech-icon">⚡</span>
+                        <div class="tech-name">Lambda</div>
+                    </div>
+                    <!-- CI/CD -->
+                    <div class="tech-item">
+                        <span class="tech-icon">🔄</span>
+                        <div class="tech-name">CI/CD</div>
+                    </div>
+                    <!-- Monitoring -->
+                    <div class="tech-item">
+                        <span class="tech-icon">📊</span>
+                        <div class="tech-name">Monitoring</div>
+                    </div>
+                    <!-- Database -->
+                    <div class="tech-item">
+                        <span class="tech-icon">🗃️</span>
+                        <div class="tech-name">Database</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced interactive hover effects with brand colors
+        document.querySelectorAll('.tech-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.12) rotateY(8deg)';
+                this.style.boxShadow = '0 18px 45px rgba(255, 134, 0, 0.4), 0 12px 30px rgba(117, 72, 151, 0.3)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotateY(0deg)';
+                this.style.boxShadow = 'none';
+            });
+
+            // Handle clicks on tech-items for links. If the tech-item is an anchor, the link is handled naturally.
+            // If it's a div, this prevents the ripple from activating a non-existent link.
+            item.addEventListener('click', function(event) {
+                // Check if the clicked element is an anchor tag or part of one
+                const isAnchor = this.tagName === 'A' || this.closest('A');
+                if (!isAnchor) {
+                    const ripple = document.createElement('div');
+                    const isOrange = Math.random() > 0.5;
+                    const color = isOrange ? 'rgba(255, 134, 0, 0.4)' : 'rgba(117, 72, 151, 0.4)';
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: ${color};
+                        transform: scale(0);
+                        animation: brandRipple 0.8s ease-out;
+                        left: 50%;
+                        top: 50%;
+                        width: 120px;
+                        height: 120px;
+                        margin-left: -60px;
+                        margin-top: -60px;
+                        pointer-events: none;
+                        box-shadow: 0 0 20px ${color};
+                    `;
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 800);
+                }
+            });
+        });
+
+        // Enhanced floating particles with brand colors
+        function createBrandParticle() {
+            const particle = document.createElement('div');
+            const isOrange = Math.random() > 0.5;
+            const color = isOrange ? '255, 134, 0' : '117, 72, 151';
+            
+            particle.style.cssText = `
+                position: fixed;
+                width: ${3 + Math.random() * 4}px;
+                height: ${3 + Math.random() * 4}px;
+                background: rgba(${color}, 0.6);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 0;
+                left: ${Math.random() * 100}vw;
+                top: 100vh;
+                box-shadow: 0 0 10px rgba(${color}, 0.8);
+                animation: brandFloatUp ${4 + Math.random() * 3}s linear forwards;
+            `;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 8000);
+        }
+
+        // Enhanced CSS for brand particles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes brandFloatUp {
+                to {
+                    transform: translateY(-105vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create brand particles more frequently
+        setInterval(createBrandParticle, 200);
+
+        // Enhanced ripple animation (re-added for clarity, though it was there)
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes brandRipple {
+                to {
+                    transform: scale(2.5);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+    </script>
+</body>
+</html>
