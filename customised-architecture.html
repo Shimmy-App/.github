@@ -341,6 +341,60 @@
             padding-left: 1rem;
         }
         
+        /* Individual Architecture Layer Boxes */
+        .arch-layer-box {
+            background: rgba(255, 134, 0, 0.1);
+            border: 2px solid rgba(255, 134, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .arch-layer-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 134, 0, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .arch-layer-box:hover {
+            transform: translateX(10px);
+            border-color: rgba(255, 134, 0, 0.5);
+            box-shadow: 0 5px 20px rgba(255, 134, 0, 0.2);
+        }
+        
+        .arch-layer-box:hover::before {
+            left: 100%;
+        }
+        
+        .arch-layer-title {
+            color: #FF8600;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .arch-layer-desc {
+            color: #e0e0e0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .arch-arrow {
+            text-align: center;
+            color: #FF8600;
+            font-size: 2rem;
+            margin: 0.5rem 0;
+            animation: bounce 2s infinite;
+        }
+        
         /* Tech Stack Box */
         .tech-stack {
             background: rgba(255, 255, 255, 0.03);
@@ -534,29 +588,53 @@
         }
         
         .benefit-card {
-            background: linear-gradient(135deg, rgba(17, 153, 142, 0.2) 0%, rgba(56, 239, 125, 0.2) 100%);
-            border: 2px solid rgba(56, 239, 125, 0.3);
+            background: linear-gradient(135deg, rgba(255, 134, 0, 0.2) 0%, rgba(255, 184, 77, 0.2) 100%);
+            border: 2px solid rgba(255, 134, 0, 0.3);
             color: white;
             padding: 2rem;
             border-radius: 15px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 134, 0, 0.1), transparent);
+            transition: left 0.6s ease;
         }
         
         .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(56, 239, 125, 0.3);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 134, 0, 0.3);
+            border-color: rgba(255, 134, 0, 0.5);
+        }
+        
+        .benefit-card:hover::before {
+            left: 100%;
         }
         
         .benefit-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
         
         .benefit-title {
             font-weight: bold;
             font-size: 1.3rem;
             margin-bottom: 0.8rem;
-            color: #38ef7d;
+            color: #FF8600;
         }
         
         .benefit-desc {
@@ -722,7 +800,7 @@
     <nav class="navbar">
         <div class="navbar-content">
             <a href="Product Map.html" class="navbar-brand">
-                <img src="profile/Shm.png" alt="Shimmy Logo" class="logo-img">
+                <img src="images/app_logo.png" alt="Shimmy Logo" class="logo-img">
                 Shimmy Backend Architecture
             </a>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
@@ -753,15 +831,38 @@
         <div class="architecture-layer">
             <div class="layer-title">System Architecture Overview</div>
             <div class="layer-content">
-                <p><strong>Client Layer:</strong> Flutter/Dart mobile applications and Vue.js web application</p>
-                <p><strong>↓</strong></p>
-                <p><strong>API Gateway Layer:</strong> C# / .NET handles request routing, authentication, rate limiting, and load balancing</p>
-                <p><strong>↓</strong></p>
-                <p><strong>Microservices Layer:</strong> Seven independent services for login, content, recommendations, moderation, tracking, payments, and search</p>
-                <p><strong>↓</strong></p>
-                <p><strong>Data & Storage Layer:</strong> AWS RDS (MySQL), AWS S3, DynamoDB, Redis Cache</p>
-                <p><strong>↓</strong></p>
-                <p><strong>Infrastructure Layer:</strong> AWS EC2, Lambda, ECS/EKS, CloudWatch, VPC, and supporting services</p>
+                <div class="arch-layer-box">
+                    <div class="arch-layer-title">Client Layer</div>
+                    <div class="arch-layer-desc">Flutter/Dart mobile applications and Vue.js web application</div>
+                </div>
+                
+                <div class="arch-arrow">↓</div>
+                
+                <div class="arch-layer-box">
+                    <div class="arch-layer-title">API Gateway Layer</div>
+                    <div class="arch-layer-desc">C# / .NET handles request routing, authentication, rate limiting, and load balancing</div>
+                </div>
+                
+                <div class="arch-arrow">↓</div>
+                
+                <div class="arch-layer-box">
+                    <div class="arch-layer-title">Microservices Layer</div>
+                    <div class="arch-layer-desc">Seven independent services for login, content, recommendations, moderation, tracking, payments, and search</div>
+                </div>
+                
+                <div class="arch-arrow">↓</div>
+                
+                <div class="arch-layer-box">
+                    <div class="arch-layer-title">Data & Storage Layer</div>
+                    <div class="arch-layer-desc">AWS RDS (MySQL), AWS S3, DynamoDB, Redis Cache</div>
+                </div>
+                
+                <div class="arch-arrow">↓</div>
+                
+                <div class="arch-layer-box">
+                    <div class="arch-layer-title">Infrastructure Layer</div>
+                    <div class="arch-layer-desc">AWS EC2, Lambda, ECS/EKS, CloudWatch, VPC, and supporting services</div>
+                </div>
             </div>
         </div>
 
