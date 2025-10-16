@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Backend Architecture | Customised C# / Python System</title>
+    <title>Backend Architecture | Shimmy Customised System</title>
+    <!-- Google Fonts - Baloo 2 -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,24 +14,24 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Baloo 2', cursive;
             line-height: 1.6;
             color: #e0e0e0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(135deg, #3d1a4a 0%, #2e1439 50%, #1f0e28 100%);
             min-height: 100vh;
             padding: 0;
         }
         
         /* Navigation Bar */
         .navbar {
-            background: rgba(26, 26, 46, 0.95);
+            background: rgba(47, 20, 57, 0.95);
             backdrop-filter: blur(10px);
             padding: 1rem 2rem;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 2px solid rgba(255, 119, 0, 0.3);
+            border-bottom: 2px solid rgba(117, 72, 151, 0.4);
         }
         
         .navbar-content {
@@ -45,19 +47,42 @@
             display: none;
             background: none;
             border: none;
-            color: #ff7700;
+            color: #FF8600;
             font-size: 1.5rem;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle:hover {
+            transform: scale(1.1);
+            color: #ffb84d;
         }
         
         .navbar-brand {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #ff7700;
+            color: #FF8600;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 4px 15px rgba(255, 134, 0, 0.4);
+        }
+        
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-img:hover {
+            transform: rotate(360deg);
         }
         
         .navbar-brand span {
@@ -74,23 +99,47 @@
             color: #e0e0e0;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             padding: 0.5rem 1rem;
             border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #FF8600;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
         
         .nav-links a:hover {
-            color: #ff7700;
-            background: rgba(255, 119, 0, 0.1);
+            color: #FF8600;
+            background: rgba(255, 134, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a:hover::before {
+            width: 80%;
         }
         
         .nav-links a.active {
-            color: #ff7700;
-            background: rgba(255, 119, 0, 0.15);
+            color: #FF8600;
+            background: rgba(255, 134, 0, 0.15);
+            box-shadow: 0 4px 15px rgba(255, 134, 0, 0.2);
+        }
+        
+        .nav-links a.active::before {
+            width: 80%;
         }
         
         .back-button {
-            background: linear-gradient(135deg, #ff7700 0%, #ff9900 100%);
+            background: linear-gradient(135deg, #FF8600 0%, #ffb84d 100%);
             color: white;
             padding: 0.8rem 1.5rem;
             border-radius: 8px;
@@ -101,11 +150,28 @@
             align-items: center;
             gap: 8px;
             margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
         }
         
         .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 119, 0, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 134, 0, 0.4);
+        }
+        
+        .back-button:hover::before {
+            left: 100%;
         }
         
         /* Main Container */
@@ -122,14 +188,39 @@
             background: rgba(255, 255, 255, 0.02);
             border-radius: 20px;
             margin-bottom: 3rem;
-            border: 1px solid rgba(255, 119, 0, 0.2);
+            border: 1px solid rgba(255, 134, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .hero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 134, 0, 0.1);
         }
         
         h1 {
-            color: #ff7700;
+            color: #FF8600;
             font-size: 3rem;
             margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(255, 119, 0, 0.3);
+            text-shadow: 0 2px 10px rgba(255, 134, 0, 0.3);
+            font-weight: 800;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 2px 10px rgba(255, 134, 0, 0.3); }
+            to { text-shadow: 0 4px 20px rgba(255, 134, 0, 0.5); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .subtitle {
@@ -141,21 +232,52 @@
         
         /* Section Headers */
         h2 {
-            color: #ff7700;
+            color: #FF8600;
             font-size: 2rem;
             margin: 3rem 0 1.5rem;
             padding-left: 1rem;
-            border-left: 5px solid #ff7700;
+            border-left: 5px solid #FF8600;
+            font-weight: 700;
+            position: relative;
+            animation: slideInLeft 0.6s ease-out;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 1rem;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #FF8600, transparent);
+            animation: expandWidth 0.8s ease-out 0.3s both;
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 50px; }
         }
         
         h3 {
-            color: #ffa500;
+            color: #ffb84d;
             font-size: 1.5rem;
             margin: 2rem 0 1rem;
+            font-weight: 600;
         }
         
         h4 {
-            color: #ffb84d;
+            color: #FF8600;
             font-size: 1.2rem;
             margin: 1.5rem 0 0.8rem;
             font-weight: 600;
@@ -179,18 +301,36 @@
         
         /* Architecture Overview Box */
         .architecture-layer {
-            background: linear-gradient(135deg, rgba(255, 119, 0, 0.15) 0%, rgba(255, 165, 0, 0.1) 100%);
-            border: 2px solid rgba(255, 119, 0, 0.3);
+            background: linear-gradient(135deg, rgba(255, 134, 0, 0.15) 0%, rgba(255, 184, 77, 0.1) 100%);
+            border: 2px solid rgba(255, 134, 0, 0.3);
             padding: 2.5rem;
             border-radius: 15px;
             margin: 2rem 0;
-            box-shadow: 0 8px 32px rgba(255, 119, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(255, 134, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInScale 0.8s ease-out;
+        }
+        
+        .architecture-layer:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(255, 134, 0, 0.3);
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
         
         .layer-title {
             font-size: 1.8rem;
             font-weight: bold;
-            color: #ff7700;
+            color: #FF8600;
             margin-bottom: 1.5rem;
             text-align: center;
         }
@@ -207,15 +347,22 @@
             padding: 2rem;
             border-radius: 15px;
             margin: 2rem 0;
-            border: 1px solid rgba(255, 119, 0, 0.2);
+            border: 1px solid rgba(255, 134, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-stack:hover {
+            border-color: rgba(255, 134, 0, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 134, 0, 0.1);
         }
         
         .tech-category {
             margin: 1.5rem 0;
+            animation: fadeInUp 0.6s ease-out;
         }
         
         .tech-category h4 {
-            color: #ff7700;
+            color: #FF8600;
             margin-bottom: 0.8rem;
         }
         
@@ -228,13 +375,36 @@
         }
         
         .aws-tag {
-            background: linear-gradient(135deg, #ff9900 0%, #ff7700 100%);
+            background: linear-gradient(135deg, #FF8600 0%, #ffb84d 100%);
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 600;
-            box-shadow: 0 2px 10px rgba(255, 119, 0, 0.3);
+            box-shadow: 0 2px 10px rgba(255, 134, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .aws-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .aws-tag:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 134, 0, 0.4);
+        }
+        
+        .aws-tag:hover::before {
+            left: 100%;
         }
         
         /* Microservices Grid */
@@ -247,25 +417,43 @@
         
         .service-card {
             background: rgba(255, 255, 255, 0.03);
-            border: 2px solid rgba(255, 119, 0, 0.2);
+            border: 2px solid rgba(255, 134, 0, 0.2);
             border-radius: 15px;
             padding: 0;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
         }
         
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(255, 119, 0, 0.3);
-            border-color: rgba(255, 119, 0, 0.6);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(255, 134, 0, 0.3);
+            border-color: rgba(255, 134, 0, 0.6);
         }
         
         .service-header {
-            background: linear-gradient(135deg, #ff7700 0%, #ff9900 100%);
+            background: linear-gradient(135deg, #FF8600 0%, #ffb84d 100%);
             color: white;
             padding: 1.5rem;
             font-weight: bold;
             font-size: 1.3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .service-card:hover .service-header::before {
+            left: 100%;
         }
         
         .service-tech {
@@ -304,16 +492,35 @@
         /* Phase Boxes */
         .phase-box {
             background: rgba(255, 255, 255, 0.03);
-            border-left: 5px solid #ff7700;
+            border-left: 5px solid #FF8600;
             padding: 1.5rem;
             margin: 1.5rem 0;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: slideInRight 0.6s ease-out;
+        }
+        
+        .phase-box:hover {
+            transform: translateX(10px);
+            box-shadow: 0 6px 20px rgba(255, 134, 0, 0.2);
+            border-left-width: 8px;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
         .phase-title {
             font-weight: bold;
-            color: #ff7700;
+            color: #FF8600;
             font-size: 1.3rem;
             margin-bottom: 1rem;
         }
@@ -361,15 +568,16 @@
         /* Flow Diagram */
         .flow-diagram {
             background: rgba(255, 255, 255, 0.02);
-            border: 2px solid rgba(255, 119, 0, 0.2);
+            border: 2px solid rgba(255, 134, 0, 0.2);
             padding: 2.5rem;
             border-radius: 15px;
             margin: 2rem 0;
             text-align: center;
+            animation: fadeInScale 0.8s ease-out;
         }
         
         .flow-step {
-            background: linear-gradient(135deg, #ff7700 0%, #ff9900 100%);
+            background: linear-gradient(135deg, #FF8600 0%, #ffb84d 100%);
             color: white;
             padding: 1.2rem 2rem;
             border-radius: 10px;
@@ -377,14 +585,44 @@
             margin: 10px;
             font-weight: 600;
             min-width: 180px;
-            box-shadow: 0 4px 15px rgba(255, 119, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 134, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flow-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .flow-step:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 134, 0, 0.4);
+        }
+        
+        .flow-step:hover::before {
+            left: 100%;
         }
         
         .flow-arrow {
             font-size: 2rem;
-            color: #ff7700;
+            color: #FF8600;
             margin: 0 10px;
             display: inline-block;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(0); }
+            40% { transform: translateX(-10px); }
+            60% { transform: translateX(10px); }
         }
         
         /* Note Box */
@@ -412,12 +650,12 @@
         
         /* Footer */
         footer {
-            background: rgba(26, 26, 46, 0.95);
+            background: rgba(47, 20, 57, 0.95);
             color: #b0b0b0;
             text-align: center;
             padding: 2rem;
             margin-top: 4rem;
-            border-top: 2px solid rgba(255, 119, 0, 0.3);
+            border-top: 2px solid rgba(117, 72, 151, 0.3);
         }
         
         footer p {
@@ -445,7 +683,7 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: rgba(26, 26, 46, 0.98);
+                background: rgba(47, 20, 57, 0.98);
                 padding: 1rem 2rem;
                 display: none;
             }
@@ -458,7 +696,7 @@
                 display: block;
                 background: none;
                 border: none;
-                color: #ff7700;
+                color: #FF8600;
                 font-size: 1.5rem;
                 cursor: pointer;
             }
@@ -484,7 +722,8 @@
     <nav class="navbar">
         <div class="navbar-content">
             <a href="Product Map.html" class="navbar-brand">
-                <span>⚙️</span> Backend Architecture
+                <img src="profile/Shm.png" alt="Shimmy Logo" class="logo-img">
+                Shimmy Backend Architecture
             </a>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
                 ☰
@@ -506,7 +745,7 @@
         
         <!-- Hero Section -->
         <div class="hero">
-            <h1>Customised C# / Python Backend Architecture</h1>
+            <h1>Shimmy Backend Architecture</h1>
             <p class="subtitle">A modern microservices architecture migrating from PHP/Laravel to C# and Python, leveraging AWS infrastructure for scalability and performance.</p>
         </div>
 
@@ -625,18 +864,19 @@
 
             <div class="service-card">
                 <div class="service-header">
-                    4. Moderation Engine
+                    4. Shimmy Moderation Engine
                     <div class="service-tech">Python</div>
                 </div>
                 <ul>
-                    <li><strong>Custom moderation system with Google Gemma LLM</strong></li>
-                    <li>Text content moderation</li>
-                    <li>Sentiment analysis</li>
-                    <li>Automated content flagging</li>
-                    <li>Manual review queue management</li>
-                    <li>Toxicity scoring and reporting</li>
+                    <li><strong>Custom Shimmy moderation system with proprietary algorithms</strong></li>
+                    <li>Amazon Rekognition integration for video/image content analysis</li>
+                    <li>Real-time text content moderation and filtering</li>
+                    <li>Advanced sentiment analysis and context understanding</li>
+                    <li>Automated content flagging with human review workflows</li>
+                    <li>Community reporting and moderation tools</li>
+                    <li>Toxicity scoring and user safety metrics</li>
                 </ul>
-                <div class="storage-tag">📦 Storage: AWS S3 for model storage, Lambda/EC2 for processing, AWS RDS (MySQL) for moderation logs</div>
+                <div class="storage-tag">📦 Storage: AWS S3 for content storage, Rekognition for media analysis, AWS RDS (MySQL) for moderation logs</div>
             </div>
 
             <div class="service-card">
@@ -707,7 +947,7 @@
             <div class="phase-title">Phase 2: Core Services</div>
             <ul>
                 <li>Migrate Content Engine to C#/.NET</li>
-                <li>Deploy Moderation Engine with Python/Gemma LLM</li>
+                <li>Deploy Shimmy Moderation Engine with custom algorithms and Amazon Rekognition</li>
                 <li>Integrate Search Engine (OpenSearch)</li>
                 <li>Set up S3 and CloudFront for media delivery</li>
             </ul>
@@ -854,7 +1094,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Customised Backend Architecture Documentation</p>
+        <p>&copy; 2025 Shimmy Group Ltd</p>
         <p>Built with C# / .NET, Python, and AWS Infrastructure</p>
     </footer>
 
