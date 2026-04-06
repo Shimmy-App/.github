@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="Tiny.png" alt="Shimmy Logo" width="350" />
+<img src="shimmy_text_logo.png" alt="Shimmy Logo" width="350" />
 
 <br />
 
 # 🚀 Welcome to Shimmy!
 
-### *“Your purpose-driven social media journey begins here.”*
+### *Your purpose-driven social media journey begins here!*
 
 <br />
 
@@ -41,6 +41,6 @@ Made with 💜 by the **Shimmy Team**
 
 <br />
 
-<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FShimmy-App&count_bg=%23754897&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Profile+Views&edge_flat=false" alt="Views" />
+<img src="https://komarev.com/ghpvc/?username=Shimmy-App&label=Profile%20Views&color=754897&style=flat" alt="Views" />
 
 </div>
