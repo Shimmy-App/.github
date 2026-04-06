@@ -15,14 +15,14 @@
   | Platform          | Link                                  | Description                                           |
   | :---------------- | :------------------------------------ | :---------------------------------------------------- |
   | **Official Site** | [shimmyapp.com](https://www.shimmyapp.com/) | Discover our inspiring vision and learn more about Shimmy. |
-  | **Product Map** | [Product Map](https://shimmy-app.github.io/.github/)     | View all Shimmy Dev tools   |
-  | **Live Platform** | [shimmy.live](https://www.shimmy.live/)     | Immerse yourself and experience Shimmy in real-time!   |
+  | **Product Map** | [Product Map] (private)     | View all Shimmy Dev tools   |
+  | **Live Platform** | [shimmy.live] (private) | Immerse yourself and experience Shimmy in real-time!   |
 
   <h3>🔑 Seamless App & Account Access</h3>
 
   All essential information for accessing the Shimmy application and managing your account, including secure credentials, is exclusively provided through our **Confluence knowledge base**.
 
-  ➡️ **Access Confluence Here:** [https://shimmyapp.atlassian.net/wiki/home](https://shimmyapp.atlassian.net/wiki/home)
+  ➡️ **Access Confluence Here:** (Private)
 
   <h3>❓ Need Further Assistance?</h3>
 
