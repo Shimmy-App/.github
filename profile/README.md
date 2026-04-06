@@ -1,45 +1,46 @@
 <div align="center">
-  <img src="./Shm.png" alt="Shimmy Logo" width="250"/>
-  <h1>👋 Welcome to Shimmy! 👋</h1>
-  
-  Your purpose-driven social media journey begins here.
 
-  ---
+<img src="Tiny.png" alt="Shimmy Logo" width="350" />
 
-  At Shimmy, we are passionately building a unique digital space where **meaningful connections** and **purposeful content** thrive. We are absolutely thrilled to welcome you to our mission to redefine what social media can be.
+<br />
 
-  <h2>🚀 Get Started with Shimmy</h2>
+# 🚀 Welcome to Shimmy!
 
-  <h3>🔗 Explore Our Platforms</h3>
+### *“Your purpose-driven social media journey begins here.”*
 
-  | Platform          | Link                                  | Description                                           |
-  | :---------------- | :------------------------------------ | :---------------------------------------------------- |
-  | **Official Site** | [shimmyapp.com](https://www.shimmyapp.com/) | Discover our inspiring vision and learn more about Shimmy. |
-  | **Product Map** | [Product Map] (private)     | View all Shimmy Dev tools   |
-  | **Live Platform** | [shimmy.live] (private) | Immerse yourself and experience Shimmy in real-time!   |
+<br />
 
-  <h3>🔑 Seamless App & Account Access</h3>
+<a href="https://shimmyapp.com"><img src="https://img.shields.io/badge/Official_Site-FF8600?style=for-the-badge&logo=googlechrome&logoColor=white" /></a>
+<a href="https://docs.shimmyapp.com"><img src="https://img.shields.io/badge/Documentation-754897?style=for-the-badge&logo=gitbook&logoColor=white" /></a>
+<a href="https://confluence.atlassian.com/alldoc/atlassian-documentation-32243719.html"><img src="https://img.shields.io/badge/Confluence-FF8600?style=for-the-badge&logo=confluence&logoColor=white" /></a>
+<a href="mailto:support@shimmyapp.com"><img src="https://img.shields.io/badge/Support-754897?style=for-the-badge&logo=gmail&logoColor=white" /></a>
 
-  All essential information for accessing the Shimmy application and managing your account, including secure credentials, is exclusively provided through our **Confluence knowledge base**.
+</div>
 
-  ➡️ **Access Confluence Here:** (Private)
+---
 
-  <h3>❓ Need Further Assistance?</h3>
+### 🌟 Our Mission
+At Shimmy, we are passionately building a unique digital space where **meaningful connections** and **purposeful content** thrive. We are absolutely thrilled to welcome you to our mission to redefine what social media can be.
 
-  Should you require any further access details, have questions about getting started, or need general support, please do not hesitate to contact your dedicated **company administrator**. They are standing by to assist you every step of the way!
+---
 
-  ---
+### 🛠️ Built With
+We utilise a robust, modern tech stack to power the Shimmy ecosystem:
 
-  <h3>💜 We're confident you're going to love being a part of the Shimmy community! 💜</h3>
-  
-  Thank you for embarking on this journey with us!
+| Category | Tech Stack |
+| :--- | :--- |
+| **Frontend** | ![Flutter](https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=Flutter&logoColor=white) ![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=flat-square&logo=vuedotjs&logoColor=4FC08D) |
+| **Backend** | ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white) ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![.NET](https://img.shields.io/badge/.NET-512BD4?style=flat-square&logo=dotnet&logoColor=white) |
+| **Cloud** | ![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white) |
 
-  ---
+---
 
-<a href="https://www.gitbook.com/preview?utm_source=gitbook_readme_badge&utm_medium=organic&utm_campaign=preview_documentation&utm_content=link">
-    <img
-        src="https://img.shields.io/static/v1?message=Documented%20on%20GitBook&logo=gitbook&logoColor=ffffff&label=%20&labelColor=5c5c5c&color=3F89A1"
-    />
-</a>
-  
+<div align="center">
+
+Made with 💜 by the **Shimmy Team**
+
+<br />
+
+<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FShimmy-App&count_bg=%23754897&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Profile+Views&edge_flat=false" alt="Views" />
+
 </div>
